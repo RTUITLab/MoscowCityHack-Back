@@ -13,3 +13,6 @@ spring:
   application:
     name: mch
 
+
+cors:
+  origin: "*"
