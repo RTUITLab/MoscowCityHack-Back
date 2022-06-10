@@ -13,6 +13,8 @@ spring:
   application:
     name: mch
 
+jwt:
+  secret: test-secret
 
 cors:
   origin: "*"
