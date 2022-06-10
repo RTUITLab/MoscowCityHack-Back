@@ -10,18 +10,19 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
+public class User extends AbstractEntity{
     private String login;
     private String password;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
+
+    public User(Long id, String login, String password, Role role) {
+        super(id);
+        this.login = login;
+        this.password = password;
+        this.role = role;
+    }
 }

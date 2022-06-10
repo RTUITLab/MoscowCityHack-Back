@@ -10,16 +10,17 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class CompanyInfo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
+public class CompanyInfo extends AbstractEntity{
     private String name;
     private String address;
     @OneToOne
     private User user;
+
+    public CompanyInfo(Long id, String name, String address, User user) {
+        super(id);
+        this.name = name;
+        this.address = address;
+        this.user = user;
+    }
 }

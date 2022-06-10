@@ -11,17 +11,19 @@ import java.sql.Date;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class VolunteerInfo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
+public class VolunteerInfo extends AbstractEntity{
     private String name;
     private String surname;
     private Date birthDate;
     @OneToOne
     private User user;
+
+    public VolunteerInfo(Long id, String name, String surname, Date birthDate, User user) {
+        super(id);
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.user = user;
+    }
 }

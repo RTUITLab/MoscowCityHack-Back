@@ -10,13 +10,12 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
+public class Role extends AbstractEntity{
     private String name;
+
+    public Role(Long id, String name) {
+        super(id);
+        this.name = name;
+    }
 }
