@@ -10,7 +10,12 @@ services:
       context: .
     ports:
       - '8090:8080'
-#    environment:
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DB=mch
+      - DB_USER=postgres
+      - DB_PASS=root
     depends_on:
       - db
 

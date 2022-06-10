@@ -1,0 +1,15 @@
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: /api/mch-back
+
+spring:
+  profiles:
+    active: test
+    group:
+      test: h2
+      dev: postgres
+      prod: postgres
+  application:
+    name: mch
+
