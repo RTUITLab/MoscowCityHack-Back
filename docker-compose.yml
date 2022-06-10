@@ -1,0 +1,31 @@
+version: '3.9'
+
+volumes:
+  pg_data:
+  rabbitmq_data:
+
+services:
+  mch-back:
+    build:
+      context: .
+    ports:
+      - '8090:8080'
+#    environment:
+    depends_on:
+      - db
+
+
+  db:
+    image: postgres:14.3-alpine
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=mch
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
