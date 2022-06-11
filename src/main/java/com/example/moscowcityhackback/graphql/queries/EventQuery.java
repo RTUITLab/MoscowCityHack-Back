@@ -1,6 +1,6 @@
 package com.example.moscowcityhackback.graphql.queries;
 
-import com.example.moscowcityhackback.entity.Event;
+import com.example.moscowcityhackback.entity.event.Event;
 import com.example.moscowcityhackback.services.EventService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;

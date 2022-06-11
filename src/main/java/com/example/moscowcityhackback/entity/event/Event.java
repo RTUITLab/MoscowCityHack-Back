@@ -1,5 +1,6 @@
-package com.example.moscowcityhackback.entity;
+package com.example.moscowcityhackback.entity.event;
 
+import com.example.moscowcityhackback.entity.AbstractEntity;
 import com.example.moscowcityhackback.entity.profile.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,9 +1,8 @@
 package com.example.moscowcityhackback.graphql.mutations;
 
-import com.example.moscowcityhackback.entity.Event;
+import com.example.moscowcityhackback.entity.event.Event;
 import com.example.moscowcityhackback.services.EventService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
-import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

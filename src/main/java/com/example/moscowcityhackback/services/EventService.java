@@ -1,6 +1,6 @@
 package com.example.moscowcityhackback.services;
 
-import com.example.moscowcityhackback.entity.Event;
+import com.example.moscowcityhackback.entity.event.Event;
 import com.example.moscowcityhackback.repositories.EventRepository;
 import org.springframework.stereotype.Service;
 

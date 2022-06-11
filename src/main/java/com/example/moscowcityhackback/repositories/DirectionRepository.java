@@ -1,7 +1,6 @@
 package com.example.moscowcityhackback.repositories;
 
-import com.example.moscowcityhackback.entity.Direction;
-import com.example.moscowcityhackback.entity.Tag;
+import com.example.moscowcityhackback.entity.event.Direction;
 
 public interface DirectionRepository extends CommonRepository<Direction> {
     Direction findByName(String name);

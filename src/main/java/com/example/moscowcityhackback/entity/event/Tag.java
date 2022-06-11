@@ -1,5 +1,6 @@
-package com.example.moscowcityhackback.entity;
+package com.example.moscowcityhackback.entity.event;
 
+import com.example.moscowcityhackback.entity.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "directions")
-public class Direction extends AbstractEntity {
+@Table(name = "tags")
+public class Tag extends AbstractEntity {
     private String name;
 }
