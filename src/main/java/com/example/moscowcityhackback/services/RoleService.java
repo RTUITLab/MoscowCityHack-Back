@@ -9,4 +9,7 @@ public class RoleService extends AbstractService<Role, RoleRepository> {
     public RoleService(RoleRepository repository) {
         super(repository);
     }
+    public Role getByName(String name) {
+        return repository.findByName(name);
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.moscowcityhackback.services;
 
 import com.example.moscowcityhackback.entity.UserInfo;
+import com.example.moscowcityhackback.repositories.RoleRepository;
 import com.example.moscowcityhackback.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,9 +17,11 @@ import java.util.List;
 @Service
 public class UserService extends AbstractService<UserInfo, UserRepository> implements UserDetailsService {
     private PasswordEncoder passwordEncoder;
-    public UserService(UserRepository repository, @Autowired PasswordEncoder passwordEncoder) {
+    private RoleRepository roleRepository;
+    public UserService(UserRepository repository, @Autowired PasswordEncoder passwordEncoder, @Autowired RoleRepository roleRepository) {
         super(repository);
         this.passwordEncoder = passwordEncoder;
+        this.roleRepository = roleRepository;
     }
 
     @Override
@@ -37,6 +40,8 @@ public class UserService extends AbstractService<UserInfo, UserRepository> imple
     @Override
     public List<UserInfo> create(UserInfo userInfo) {
         userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
+        // TODO так себе костыль
+        userInfo.setRole(roleRepository.findByName(userInfo.getRole().getName()));
         repository.save(userInfo);
         return repository.findAll();
     }
