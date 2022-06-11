@@ -1,6 +1,6 @@
 package com.example.moscowcityhackback.graphql.queries;
 
-import com.example.moscowcityhackback.entity.Moderator;
+import com.example.moscowcityhackback.entity.profile.Moderator;
 import com.example.moscowcityhackback.services.ModeratorService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;

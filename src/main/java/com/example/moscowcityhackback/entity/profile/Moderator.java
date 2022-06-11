@@ -1,11 +1,11 @@
-package com.example.moscowcityhackback.entity;
+package com.example.moscowcityhackback.entity.profile;
 
+import com.example.moscowcityhackback.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @Table(name = "moderators")
-public class Moderator extends AbstractEntity{
+public class Moderator extends AbstractEntity {
     private String name;
     private String surname;
     private LocalDate birthDate;

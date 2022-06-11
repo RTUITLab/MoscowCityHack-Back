@@ -1,5 +1,6 @@
-package com.example.moscowcityhackback.entity;
+package com.example.moscowcityhackback.entity.profile;
 
+import com.example.moscowcityhackback.entity.AbstractEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @Table(name = "users")
-public class User extends AbstractEntity{
+public class User extends AbstractEntity {
     private String login;
     private String password;
 

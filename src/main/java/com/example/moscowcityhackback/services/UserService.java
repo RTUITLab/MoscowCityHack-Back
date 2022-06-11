@@ -1,6 +1,6 @@
 package com.example.moscowcityhackback.services;
 
-import com.example.moscowcityhackback.entity.User;
+import com.example.moscowcityhackback.entity.profile.User;
 import com.example.moscowcityhackback.repositories.RoleRepository;
 import com.example.moscowcityhackback.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

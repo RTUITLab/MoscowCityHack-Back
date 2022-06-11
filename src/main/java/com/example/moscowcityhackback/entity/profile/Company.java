@@ -1,5 +1,6 @@
-package com.example.moscowcityhackback.entity;
+package com.example.moscowcityhackback.entity.profile;
 
+import com.example.moscowcityhackback.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Table(name = "companies")
-public class Company extends AbstractEntity{
+public class Company extends AbstractEntity {
     private String name;
     private String photoUrl;
     @OneToOne(cascade = CascadeType.ALL)

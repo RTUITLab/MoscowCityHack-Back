@@ -1,6 +1,6 @@
 package com.example.moscowcityhackback.graphql.mutations;
 
-import com.example.moscowcityhackback.entity.Volunteer;
+import com.example.moscowcityhackback.entity.profile.Volunteer;
 import com.example.moscowcityhackback.services.VolunteerService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import org.springframework.beans.factory.annotation.Autowired;

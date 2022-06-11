@@ -1,6 +1,6 @@
 package com.example.moscowcityhackback.services;
 
-import com.example.moscowcityhackback.entity.Company;
+import com.example.moscowcityhackback.entity.profile.Company;
 import com.example.moscowcityhackback.repositories.CompanyInfoRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.example.moscowcityhackback.entity.advancement;
 
 import com.example.moscowcityhackback.entity.AbstractEntity;
-import com.example.moscowcityhackback.entity.User;
+import com.example.moscowcityhackback.entity.profile.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

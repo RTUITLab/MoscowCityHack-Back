@@ -1,5 +1,6 @@
-package com.example.moscowcityhackback.entity;
+package com.example.moscowcityhackback.entity.profile;
 
+import com.example.moscowcityhackback.entity.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Table(name = "roles")
-public class Role extends AbstractEntity{
+public class Role extends AbstractEntity {
     private String name;
 
     public Role(Long id, String name) {

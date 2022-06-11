@@ -2,9 +2,7 @@ package com.example.moscowcityhackback.graphql.queries;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.example.moscowcityhackback.entity.Company;
-import com.example.moscowcityhackback.entity.Role;
-import com.example.moscowcityhackback.entity.User;
+import com.example.moscowcityhackback.entity.profile.User;
 import com.example.moscowcityhackback.services.CompanyService;
 import com.example.moscowcityhackback.services.RoleService;
 import com.example.moscowcityhackback.services.UserService;
@@ -16,7 +14,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Component

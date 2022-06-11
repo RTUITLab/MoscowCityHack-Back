@@ -19,30 +19,51 @@ input TagInput {
 }
 
 type Event {
+    id: ID!
     title: String,
     region: String,
     beginTime: DateTime,
     endTime: DateTime,
-    taskDescription: String
-    requirements: String
-    facilities: String
+    taskDescription: [String]
+    requirements: [String]
+    facilities: [String]
     photoUrl: String,
     email: String
+    currentAmount: Int,
+    maxAmount: Int,
+    participants: [User],
+    owner: User,
     directions: [Direction],
     tags: [Tag]
 }
 
-input Event {
+input EventInput {
     title: String,
     region: String,
     beginTime: DateTime,
     endTime: DateTime,
-    taskDescription: String
-    requirements: String
-    facilities: String
+    taskDescription: [String]
+    requirements: [String]
+    facilities: [String]
     photoUrl: String,
     email: String
+    currentAmount: Int,
+    maxAmount: Int,
+    participants: [UserInput],
+    owner: UserInput,
     directions: [DirectionInput],
     tags: [TagInput]
 }
+extend type Query {
+    getEvents: [Event],
+    getEvent(id: ID!): Event
+}
+
+extend type Mutation {
+    createEvent(event: EventInput): [Event],
+    updateEvent(id: ID!, event: EventInput): Event,
+    deleteEvent(id: ID!): [Event],
+    deleteEvents: [Event]
+}
+
 
