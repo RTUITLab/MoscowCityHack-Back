@@ -5,6 +5,7 @@ type Moderator {
     name: String,
     surname: String,
     birthDate: Date,
+    photoUrl: String,
     user: User
 }
 

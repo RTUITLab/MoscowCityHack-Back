@@ -25,10 +25,10 @@ public class Event extends AbstractEntity {
     private String region;
     private Timestamp beginTime;
     private Timestamp endTime;
-    private String desc;
+    private String taskDescription;
     private String requirements;
     private String facilities;
-    private String imageUrl;
+    private String photoUrl;
     @OneToMany
     private List<Tag> tags;
     private String email;

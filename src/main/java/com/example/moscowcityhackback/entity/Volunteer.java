@@ -17,6 +17,7 @@ public class Volunteer extends AbstractEntity{
     private String name;
     private String surname;
     private LocalDate birthDate;
+    private String photoUrl;
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
