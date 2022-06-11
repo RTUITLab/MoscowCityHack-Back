@@ -1,0 +1,28 @@
+scalar Date
+
+type VolunteerInfo {
+    id: ID!,
+    name: String,
+    address: String,
+    birthDate: Date,
+    user: User
+}
+
+type VolunteerInfoInput {
+    name: String,
+    address: String,
+    birthDate: Date,
+    user: User
+}
+
+extend type Query {
+    getVolunteers: [VolunteerInfo],
+    getVolunteer(id: ID!): VolunteerInfo
+}
+
+type Mutation {
+    createVolunteer(volunteer: VolunteerInfoInput): [VolunteerInfo],
+    updateVolunteer(id: ID!, volunteer: VolunteerInfoInput): VolunteerInfo,
+    deleteVolunteer(id: ID!): [VolunteerInfo],
+    deleteCompanies: [VolunteerInfo]
+}

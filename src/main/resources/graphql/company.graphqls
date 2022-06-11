@@ -1,0 +1,24 @@
+type CompanyInfo {
+    id: ID!,
+    name: String,
+    address: String,
+    user: User
+}
+
+type CompanyInfoInput {
+    name: String,
+    address: String,
+    user: User
+}
+
+type Query {
+    getCompanies: [CompanyInfo],
+    getCompany(id: ID!): CompanyInfo
+}
+
+type Mutation {
+    createCompany(company: CompanyInfoInput): [CompanyInfo],
+    updateCompany(id: ID!, company: CompanyInfoInput): CompanyInfo,
+    deleteCompany(id: ID!): [CompanyInfo],
+    deleteCompanies: [CompanyInfo]
+}
