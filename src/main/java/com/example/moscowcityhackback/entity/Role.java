@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name = "roles")
 public class Role extends AbstractEntity{
     private String name;
 

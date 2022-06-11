@@ -1,6 +1,6 @@
 package com.example.moscowcityhackback.repositories;
 
-import com.example.moscowcityhackback.entity.CompanyInfo;
+import com.example.moscowcityhackback.entity.Company;
 
-public interface CompanyInfoRepository extends CommonRepository<CompanyInfo> {
+public interface CompanyInfoRepository extends CommonRepository<Company> {
 }

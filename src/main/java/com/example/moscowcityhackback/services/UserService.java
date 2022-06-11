@@ -1,6 +1,6 @@
 package com.example.moscowcityhackback.services;
 
-import com.example.moscowcityhackback.entity.UserInfo;
+import com.example.moscowcityhackback.entity.User;
 import com.example.moscowcityhackback.repositories.RoleRepository;
 import com.example.moscowcityhackback.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-public class UserService extends AbstractService<UserInfo, UserRepository> implements UserDetailsService {
+public class UserService extends AbstractService<User, UserRepository> implements UserDetailsService {
     private PasswordEncoder passwordEncoder;
     private RoleRepository roleRepository;
     public UserService(UserRepository repository, @Autowired PasswordEncoder passwordEncoder, @Autowired RoleRepository roleRepository) {
@@ -26,23 +26,23 @@ public class UserService extends AbstractService<UserInfo, UserRepository> imple
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserInfo userInfo = repository.findByLogin(username);
+        User user = repository.findByLogin(username);
         return new org.springframework.security.core.userdetails.User(
                 username,
-                userInfo.getPassword(),
-                Collections.singletonList(new SimpleGrantedAuthority(userInfo.getRole().getName())));
+                user.getPassword(),
+                Collections.singletonList(new SimpleGrantedAuthority(user.getRole().getName())));
     }
 
-    public UserInfo getByLogin(String login) {
+    public User getByLogin(String login) {
         return repository.findByLogin(login);
     }
 
     @Override
-    public List<UserInfo> create(UserInfo userInfo) {
-        userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
+    public List<User> create(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         // TODO так себе костыль
-        userInfo.setRole(roleRepository.findByName(userInfo.getRole().getName()));
-        repository.save(userInfo);
+        user.setRole(roleRepository.findByName(user.getRole().getName()));
+        repository.save(user);
         return repository.findAll();
     }
 }

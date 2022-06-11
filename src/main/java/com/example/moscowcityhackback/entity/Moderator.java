@@ -11,18 +11,19 @@ import java.sql.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ModeratorInfo extends AbstractEntity{
+@Table(name = "moderators")
+public class Moderator extends AbstractEntity{
     private String name;
     private String surname;
     private Date birthDate;
     @OneToOne
-    private UserInfo userInfo;
+    private User user;
 
-    public ModeratorInfo(Long id, String name, String surname, Date birthDate, UserInfo userInfo) {
+    public Moderator(Long id, String name, String surname, Date birthDate, User user) {
         super(id);
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
-        this.userInfo = userInfo;
+        this.user = user;
     }
 }

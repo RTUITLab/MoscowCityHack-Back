@@ -5,14 +5,14 @@ type VolunteerInfo {
     name: String,
     surname: String,
     birthDate: Date,
-    userInfo: User
+    user: User
 }
 
 input VolunteerInfoInput {
     name: String,
     surname: String,
     birthDate: Date,
-    userInfo: UserInput
+    user: UserInput
 }
 
 extend type Query {

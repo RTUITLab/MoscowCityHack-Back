@@ -3,14 +3,14 @@ type ModeratorInfo {
     name: String,
     surname: String,
     birthDate: Date,
-    userInfo: User
+    user: User
 }
 
 input ModeratorInfoInput {
     name: String,
     surname: String,
     birthDate: Date,
-    userInfo: UserInput
+    user: UserInput
 }
 
 extend type Query {

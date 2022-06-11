@@ -1,6 +1,6 @@
 package com.example.moscowcityhackback.repositories;
 
-import com.example.moscowcityhackback.entity.ModeratorInfo;
+import com.example.moscowcityhackback.entity.Moderator;
 
-public interface ModeratorInfoRepository extends CommonRepository<ModeratorInfo> {
+public interface ModeratorInfoRepository extends CommonRepository<Moderator> {
 }

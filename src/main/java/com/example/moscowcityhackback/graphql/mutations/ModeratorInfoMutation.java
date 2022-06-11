@@ -1,6 +1,6 @@
 package com.example.moscowcityhackback.graphql.mutations;
 
-import com.example.moscowcityhackback.entity.ModeratorInfo;
+import com.example.moscowcityhackback.entity.Moderator;
 import com.example.moscowcityhackback.services.ModeratorInfoService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +13,19 @@ public class ModeratorInfoMutation implements GraphQLMutationResolver {
     @Autowired
     private ModeratorInfoService ModeratorInfoService;
 
-    public List<ModeratorInfo> createModerator(ModeratorInfo moderator) {
+    public List<Moderator> createModerator(Moderator moderator) {
         return ModeratorInfoService.create(moderator);
     }
 
-    public ModeratorInfo updateModerator(long id, ModeratorInfo moderator) {
+    public Moderator updateModerator(long id, Moderator moderator) {
         return ModeratorInfoService.update(id, moderator);
     }
 
-    public List<ModeratorInfo> deleteModerator(long id) {
+    public List<Moderator> deleteModerator(long id) {
         return ModeratorInfoService.delete(id);
     }
 
-    public List<ModeratorInfo> deleteModerators() {
+    public List<Moderator> deleteModerators() {
         return ModeratorInfoService.deleteAll();
     }
 }

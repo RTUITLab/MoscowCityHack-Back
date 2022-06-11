@@ -2,7 +2,7 @@ package com.example.moscowcityhackback.graphql.queries;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.example.moscowcityhackback.entity.UserInfo;
+import com.example.moscowcityhackback.entity.User;
 import com.example.moscowcityhackback.services.UserService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import lombok.AllArgsConstructor;
@@ -22,10 +22,10 @@ public class CredentialsQuery implements GraphQLQueryResolver {
 
     public Credentials authorize(String login, String password) {
         Credentials credentials;
-        UserInfo userInfo = userService.getByLogin(login);
-        if (userInfo !=null && BCrypt.checkpw(password, userInfo.getPassword())) {
+        User user = userService.getByLogin(login);
+        if (user !=null && BCrypt.checkpw(password, user.getPassword())) {
             Algorithm algorithm = Algorithm.HMAC256(jwtSecret);
-            String userRole = userInfo.getRole().toString();
+            String userRole = user.getRole().toString();
             String access_token = JWT.create().withSubject(login).withClaim("roles", List.of(userRole)).sign(algorithm);
             credentials = new Credentials(access_token, userRole);
         }

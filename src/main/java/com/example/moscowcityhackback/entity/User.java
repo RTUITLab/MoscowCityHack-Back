@@ -9,14 +9,15 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @ToString
-public class UserInfo extends AbstractEntity{
+@Table(name = "users")
+public class User extends AbstractEntity{
     private String login;
     private String password;
 
     @ManyToOne
     private Role role;
 
-    public UserInfo(Long id, String login, String password, Role role) {
+    public User(Long id, String login, String password, Role role) {
         super(id);
         this.login = login;
         this.password = password;

@@ -10,16 +10,17 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class CompanyInfo extends AbstractEntity{
+@Table(name = "company")
+public class Company extends AbstractEntity{
     private String name;
     private String address;
     @OneToOne
-    private UserInfo userInfo;
+    private User user;
 
-    public CompanyInfo(Long id, String name, String address, UserInfo userInfo) {
+    public Company(Long id, String name, String address, User user) {
         super(id);
         this.name = name;
         this.address = address;
-        this.userInfo = userInfo;
+        this.user = user;
     }
 }
