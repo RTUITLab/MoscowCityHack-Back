@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "company")
+@Table(name = "companies")
 public class Company extends AbstractEntity{
     private String name;
     private String photoUrl;

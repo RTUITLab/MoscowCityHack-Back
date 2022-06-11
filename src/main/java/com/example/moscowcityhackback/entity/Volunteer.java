@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "volunteer")
+@Table(name = "volunteers")
 public class Volunteer extends AbstractEntity{
     private String name;
     private String surname;

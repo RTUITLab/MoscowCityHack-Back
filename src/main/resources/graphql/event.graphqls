@@ -1,0 +1,48 @@
+scalar DateTime
+
+type Direction {
+    id: ID!,
+    name: String
+}
+
+input DirectionInput {
+    name: String
+}
+
+type Tag {
+    id: ID!,
+    name: String
+}
+
+input TagInput {
+    name: String
+}
+
+type Event {
+    title: String,
+    region: String,
+    beginTime: DateTime,
+    endTime: DateTime,
+    taskDescription: String
+    requirements: String
+    facilities: String
+    photoUrl: String,
+    email: String
+    directions: [Direction],
+    tags: [Tag]
+}
+
+input Event {
+    title: String,
+    region: String,
+    beginTime: DateTime,
+    endTime: DateTime,
+    taskDescription: String
+    requirements: String
+    facilities: String
+    photoUrl: String,
+    email: String
+    directions: [DirectionInput],
+    tags: [TagInput]
+}
+
