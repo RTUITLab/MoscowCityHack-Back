@@ -13,6 +13,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.GenericFilterBean;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -21,11 +23,16 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-public class JwtFilter extends UsernamePasswordAuthenticationFilter {
-    @Autowired
+@Component
+public class JwtFilter extends GenericFilterBean {
     private UserService userService;
-    @Value("jwt.secret")
+    @Value("${jwt.secret}")
     private String jwtSecret;
+
+    @Autowired
+    public JwtFilter(UserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException, JWTVerificationException, UsernameNotFoundException {

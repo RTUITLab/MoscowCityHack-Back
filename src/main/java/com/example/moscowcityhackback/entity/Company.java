@@ -13,14 +13,12 @@ import javax.persistence.*;
 @Table(name = "company")
 public class Company extends AbstractEntity{
     private String name;
-    private String address;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
     public Company(Long id, String name, String address, User user) {
         super(id);
         this.name = name;
-        this.address = address;
         this.user = user;
     }
 }

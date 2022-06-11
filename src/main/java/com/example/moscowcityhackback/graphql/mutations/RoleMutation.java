@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-@PreAuthorize("hasAuthority('MODERATOR')")
+//@PreAuthorize("hasAuthority('MODERATOR')")
 public class RoleMutation implements GraphQLMutationResolver {
     @Autowired
     private RoleService roleService;

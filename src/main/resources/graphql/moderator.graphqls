@@ -1,4 +1,4 @@
-type ModeratorInfo {
+type Moderator {
     id: ID!,
     name: String,
     surname: String,
@@ -10,7 +10,7 @@ input ModeratorInfoInput {
     name: String,
     surname: String,
     birthDate: Date,
-    user: UserInput
+    userId: UserInput
 }
 
 extend type Query {

@@ -16,7 +16,7 @@ public class Volunteer extends AbstractEntity{
     private String name;
     private String surname;
     private Date birthDate;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
     public Volunteer(Long id, String name, String surname, Date birthDate, User user) {

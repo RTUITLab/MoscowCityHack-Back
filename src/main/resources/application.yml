@@ -16,7 +16,7 @@ spring:
     allow-bean-definition-overriding: true
 
 jwt:
-  secret: test-secret
+  secret: "test-secret"
 
 cors:
   origin: "*"

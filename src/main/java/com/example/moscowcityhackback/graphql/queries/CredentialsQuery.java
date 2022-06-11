@@ -17,14 +17,14 @@ import java.util.List;
 public class CredentialsQuery implements GraphQLQueryResolver {
     @Autowired
     private UserService userService;
-    @Value("jwt.secret")
+    @Value("${jwt.secret}")
     private String jwtSecret;
 
     public Credentials authorize(String login, String password) {
         Credentials credentials;
         User user = userService.getByLogin(login);
         if (user !=null && BCrypt.checkpw(password, user.getPassword())) {
-            Algorithm algorithm = Algorithm.HMAC256(jwtSecret);
+            Algorithm algorithm = Algorithm.HMAC256(jwtSecret.getBytes());
             String userRole = user.getRole().toString();
             String access_token = JWT.create().withSubject(login).withClaim("roles", List.of(userRole)).sign(algorithm);
             credentials = new Credentials(access_token, userRole);

@@ -1,24 +1,24 @@
-type CompanyInfo {
+type Company {
     id: ID!,
     name: String,
     address: String,
     user: User
 }
 
-input CompanyInfoInput {
+input CompanyInput {
     name: String,
     address: String,
     user: UserInput
 }
 
 type Query {
-    getCompanies: [CompanyInfo],
-    getCompany(id: ID!): CompanyInfo
+    getCompanies: [Company],
+    getCompany(id: ID!): Company
 }
 
 type Mutation {
-    createCompany(company: CompanyInfoInput): [CompanyInfo],
-    updateCompany(id: ID!, company: CompanyInfoInput): CompanyInfo,
-    deleteCompany(id: ID!): [CompanyInfo],
-    deleteCompanies: [CompanyInfo]
+    createCompany(company: CompanyInput): [Company],
+    updateCompany(id: ID!, company: CompanyInput): Company,
+    deleteCompany(id: ID!): [Company],
+    deleteCompanies: [Company]
 }

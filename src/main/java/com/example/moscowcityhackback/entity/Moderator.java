@@ -16,7 +16,7 @@ public class Moderator extends AbstractEntity{
     private String name;
     private String surname;
     private Date birthDate;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
     public Moderator(Long id, String name, String surname, Date birthDate, User user) {
