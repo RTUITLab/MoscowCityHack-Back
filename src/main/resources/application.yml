@@ -12,8 +12,8 @@ spring:
       prod: postgres
   application:
     name: mch
-  main:
-    allow-bean-definition-overriding: true
+#  main:
+#    allow-bean-definition-overriding: true
 
 jwt:
   secret: "test-secret"
@@ -21,15 +21,10 @@ jwt:
 cors:
   origin: "*"
 
-#graphql:
-#  servlet:
-#    cors-enabled: true
-#    cors:
-#      allowed-origins:
-#        - "*"
-#      allowed-methods:
-#        - "*"
-#      allowed-headers:
-#        - "*"
-#      allowed-origin-patterns:
-#        - "*"
+graphql:
+  servlet:
+    cors-enabled: true
+    cors:
+      allowed-headers: "*"
+      allowed-methods:  "*"
+      allowed-origins:  "*"
