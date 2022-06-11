@@ -31,6 +31,7 @@ type Event {
     email: String
     currentAmount: Int,
     maxAmount: Int,
+    online: Boolean,
     participants: [User],
     owner: User,
     directions: [Direction],
@@ -49,6 +50,7 @@ input EventInput {
     email: String
     currentAmount: Int,
     maxAmount: Int,
+    online: Boolean,
     participants: [UserInput],
     owner: UserInput,
     directions: [DirectionInput],

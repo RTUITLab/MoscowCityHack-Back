@@ -33,6 +33,7 @@ public class Event extends AbstractEntity {
     private String email;
     private Integer currentAmount;
     private Integer maxAmount;
+    private boolean online;
     @ManyToMany
     private List<User> participants;
     @OneToOne
