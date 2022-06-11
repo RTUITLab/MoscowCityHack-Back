@@ -1,18 +1,16 @@
-scalar Date
-
 type ModeratorInfo {
     id: ID!,
     name: String,
     surname: String,
     birthDate: Date,
-    user: User
+    userInfo: User
 }
 
-type ModeratorInfoInput {
+input ModeratorInfoInput {
     name: String,
     surname: String,
     birthDate: Date,
-    user: User
+    userInfo: UserInput
 }
 
 extend type Query {

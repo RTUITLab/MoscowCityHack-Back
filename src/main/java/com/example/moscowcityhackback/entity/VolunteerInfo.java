@@ -1,6 +1,5 @@
 package com.example.moscowcityhackback.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,13 +16,13 @@ public class VolunteerInfo extends AbstractEntity{
     private String surname;
     private Date birthDate;
     @OneToOne
-    private User user;
+    private UserInfo userInfo;
 
-    public VolunteerInfo(Long id, String name, String surname, Date birthDate, User user) {
+    public VolunteerInfo(Long id, String name, String surname, Date birthDate, UserInfo userInfo) {
         super(id);
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
-        this.user = user;
+        this.userInfo = userInfo;
     }
 }

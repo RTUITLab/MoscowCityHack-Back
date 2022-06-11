@@ -3,16 +3,16 @@ scalar Date
 type VolunteerInfo {
     id: ID!,
     name: String,
-    address: String,
+    surname: String,
     birthDate: Date,
-    user: User
+    userInfo: User
 }
 
-type VolunteerInfoInput {
+input VolunteerInfoInput {
     name: String,
-    address: String,
+    surname: String,
     birthDate: Date,
-    user: User
+    userInfo: UserInput
 }
 
 extend type Query {
@@ -20,9 +20,9 @@ extend type Query {
     getVolunteer(id: ID!): VolunteerInfo
 }
 
-type Mutation {
+extend type Mutation {
     createVolunteer(volunteer: VolunteerInfoInput): [VolunteerInfo],
     updateVolunteer(id: ID!, volunteer: VolunteerInfoInput): VolunteerInfo,
     deleteVolunteer(id: ID!): [VolunteerInfo],
-    deleteCompanies: [VolunteerInfo]
+    deleteVolunteers: [VolunteerInfo]
 }

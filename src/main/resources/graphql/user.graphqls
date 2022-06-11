@@ -5,10 +5,10 @@ type User {
     role: Role
 }
 
-type UserInput {
+input UserInput {
     login: String,
     password: String,
-    role: Role
+    role: RoleInput
 }
 
 extend type Query {
@@ -17,8 +17,8 @@ extend type Query {
 }
 
 extend type Mutation {
-    createUser(user: UserInput): [User],
-    updateUser(id: ID!, user: UserInput): User,
+    createUser(userInfo: UserInput): [User],
+    updateUser(id: ID!, userInfo: UserInput): User,
     deleteUser(id: ID!): [User],
     deleteUsers: [User]
 }

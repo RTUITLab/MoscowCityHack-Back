@@ -1,9 +1,6 @@
 package com.example.moscowcityhackback.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,15 +8,15 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User extends AbstractEntity{
+@ToString
+public class UserInfo extends AbstractEntity{
     private String login;
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "role_id")
     private Role role;
 
-    public User(Long id, String login, String password, Role role) {
+    public UserInfo(Long id, String login, String password, Role role) {
         super(id);
         this.login = login;
         this.password = password;

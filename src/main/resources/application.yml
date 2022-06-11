@@ -12,9 +12,13 @@ spring:
       prod: postgres
   application:
     name: mch
+  main:
+    allow-bean-definition-overriding: true
 
 jwt:
   secret: test-secret
 
 cors:
   origin: "*"
+
+

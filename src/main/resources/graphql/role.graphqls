@@ -3,7 +3,7 @@ type Role {
     name: String,
 }
 
-type RoleInput {
+input RoleInput {
     name: String,
 }
 

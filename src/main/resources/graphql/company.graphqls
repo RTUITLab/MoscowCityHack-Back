@@ -2,13 +2,13 @@ type CompanyInfo {
     id: ID!,
     name: String,
     address: String,
-    user: User
+    userInfo: User
 }
 
-type CompanyInfoInput {
+input CompanyInfoInput {
     name: String,
     address: String,
-    user: User
+    userInfo: UserInput
 }
 
 type Query {
