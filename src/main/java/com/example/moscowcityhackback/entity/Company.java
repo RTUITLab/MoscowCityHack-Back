@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Table(name = "company")
 public class Company extends AbstractEntity{
     private String name;
+    private String photoUrl;
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
