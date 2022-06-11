@@ -22,4 +22,9 @@ public class Company extends AbstractEntity{
         this.name = name;
         this.user = user;
     }
+
+    public Company(String name, User user) {
+        this.name = name;
+        this.user = user;
+    }
 }

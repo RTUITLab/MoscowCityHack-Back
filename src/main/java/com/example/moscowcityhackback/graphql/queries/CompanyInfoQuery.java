@@ -1,7 +1,7 @@
 package com.example.moscowcityhackback.graphql.queries;
 
 import com.example.moscowcityhackback.entity.Company;
-import com.example.moscowcityhackback.services.CompanyInfoService;
+import com.example.moscowcityhackback.services.CompanyService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,13 +11,13 @@ import java.util.List;
 @Component
 public class CompanyInfoQuery implements GraphQLQueryResolver {
     @Autowired
-    private CompanyInfoService companyInfoService;
+    private CompanyService companyService;
 
     public List<Company> getCompanies() {
-        return companyInfoService.getAll();
+        return companyService.getAll();
     }
 
     public Company getCompany(long id) {
-        return companyInfoService.getById(id);
+        return companyService.getById(id);
     }
 }

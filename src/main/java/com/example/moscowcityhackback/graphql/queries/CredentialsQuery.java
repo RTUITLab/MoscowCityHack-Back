@@ -2,8 +2,13 @@ package com.example.moscowcityhackback.graphql.queries;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.example.moscowcityhackback.entity.Company;
+import com.example.moscowcityhackback.entity.Role;
 import com.example.moscowcityhackback.entity.User;
+import com.example.moscowcityhackback.services.CompanyService;
+import com.example.moscowcityhackback.services.RoleService;
 import com.example.moscowcityhackback.services.UserService;
+import com.example.moscowcityhackback.services.VolunteerService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +16,24 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Component
 public class CredentialsQuery implements GraphQLQueryResolver {
-    @Autowired
     private UserService userService;
+//    private CompanyService companyService;
+//    private VolunteerService volunteerService;
+    private RoleService roleService;
     @Value("${jwt.secret}")
     private String jwtSecret;
+
+    @Autowired
+    public CredentialsQuery(UserService userService, CompanyService companyService, VolunteerService volunteerService) {
+        this.userService = userService;
+//        this.companyService = companyService;
+//        this.volunteerService = volunteerService;
+    }
 
     public Credentials authorize(String login, String password) {
         Credentials credentials;
@@ -33,6 +48,18 @@ public class CredentialsQuery implements GraphQLQueryResolver {
             credentials = new Credentials("incorrect login or password", "incorrect login or password");
         return credentials;
     }
+
+//    @Transactional
+//    public Credentials registerCompany(String name, User user) {
+//        Role role = roleService.getByName("ROLE_COMPANY");
+//        user.setRole(role);
+//        userService.create(user);
+//        companyService.create(new Company(name, user));
+//    }
+//
+//    public Credentials register() {
+//
+//    }
 
     @AllArgsConstructor
     private static class Credentials {

@@ -1,7 +1,7 @@
 package com.example.moscowcityhackback.graphql.queries;
 
 import com.example.moscowcityhackback.entity.Volunteer;
-import com.example.moscowcityhackback.services.VolunteerInfoService;
+import com.example.moscowcityhackback.services.VolunteerService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,15 +9,15 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class VolunteerInfoQuery implements GraphQLQueryResolver {
+public class VolunteerQuery implements GraphQLQueryResolver {
     @Autowired
-    private VolunteerInfoService volunteerInfoService;
+    private VolunteerService volunteerService;
 
     public List<Volunteer> getVolunteers() {
-        return volunteerInfoService.getAll();
+        return volunteerService.getAll();
     }
 
     public Volunteer getVolunteer(long id) {
-        return volunteerInfoService.getById(id);
+        return volunteerService.getById(id);
     }
 }

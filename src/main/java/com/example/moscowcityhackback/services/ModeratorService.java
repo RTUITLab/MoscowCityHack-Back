@@ -5,8 +5,8 @@ import com.example.moscowcityhackback.repositories.ModeratorInfoRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ModeratorInfoService extends AbstractService<Moderator, ModeratorInfoRepository> {
-    public ModeratorInfoService(ModeratorInfoRepository repository) {
+public class ModeratorService extends AbstractService<Moderator, ModeratorInfoRepository> {
+    public ModeratorService(ModeratorInfoRepository repository) {
         super(repository);
     }
 }
