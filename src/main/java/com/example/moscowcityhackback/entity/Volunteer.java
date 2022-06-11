@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -15,11 +16,11 @@ import java.sql.Date;
 public class Volunteer extends AbstractEntity{
     private String name;
     private String surname;
-    private Date birthDate;
+    private LocalDate birthDate;
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
-    public Volunteer(Long id, String name, String surname, Date birthDate, User user) {
+    public Volunteer(Long id, String name, String surname, LocalDate birthDate, User user) {
         super(id);
         this.name = name;
         this.surname = surname;

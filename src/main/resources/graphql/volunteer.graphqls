@@ -1,6 +1,4 @@
-scalar Date
-
-type VolunteerInfo {
+type Volunteer {
     id: ID!,
     name: String,
     surname: String,
@@ -8,7 +6,7 @@ type VolunteerInfo {
     user: User
 }
 
-input VolunteerInfoInput {
+input VolunteerInput {
     name: String,
     surname: String,
     birthDate: Date,
@@ -16,13 +14,13 @@ input VolunteerInfoInput {
 }
 
 extend type Query {
-    getVolunteers: [VolunteerInfo],
-    getVolunteer(id: ID!): VolunteerInfo
+    getVolunteers: [Volunteer],
+    getVolunteer(id: ID!): Volunteer
 }
 
 extend type Mutation {
-    createVolunteer(volunteer: VolunteerInfoInput): [VolunteerInfo],
-    updateVolunteer(id: ID!, volunteer: VolunteerInfoInput): VolunteerInfo,
-    deleteVolunteer(id: ID!): [VolunteerInfo],
-    deleteVolunteers: [VolunteerInfo]
+    createVolunteer(volunteer: VolunteerInput): [Volunteer],
+    updateVolunteer(id: ID!, volunteer: VolunteerInput): Volunteer,
+    deleteVolunteer(id: ID!): [Volunteer],
+    deleteVolunteers: [Volunteer]
 }

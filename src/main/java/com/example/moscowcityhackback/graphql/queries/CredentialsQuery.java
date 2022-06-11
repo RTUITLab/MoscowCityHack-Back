@@ -25,7 +25,7 @@ public class CredentialsQuery implements GraphQLQueryResolver {
         User user = userService.getByLogin(login);
         if (user !=null && BCrypt.checkpw(password, user.getPassword())) {
             Algorithm algorithm = Algorithm.HMAC256(jwtSecret.getBytes());
-            String userRole = user.getRole().toString();
+            String userRole = user.getRole().getName();
             String access_token = JWT.create().withSubject(login).withClaim("roles", List.of(userRole)).sign(algorithm);
             credentials = new Credentials(access_token, userRole);
         }

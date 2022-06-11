@@ -1,3 +1,5 @@
+scalar Date
+
 type Moderator {
     id: ID!,
     name: String,
@@ -6,21 +8,21 @@ type Moderator {
     user: User
 }
 
-input ModeratorInfoInput {
+input ModeratorInput {
     name: String,
     surname: String,
     birthDate: Date,
-    userId: UserInput
+    user: UserInput
 }
 
 extend type Query {
-    getModerators: [ModeratorInfo],
-    getModerator(id: ID!): ModeratorInfo
+    getModerators: [Moderator],
+    getModerator(id: ID!): Moderator
 }
 
 extend type Mutation {
-    createModerator(moderator: ModeratorInfoInput): [ModeratorInfo],
-    updateModerator(id: ID!, moderator: ModeratorInfoInput): ModeratorInfo,
-    deleteModerator(id: ID!): [ModeratorInfo],
-    deleteModerators: [ModeratorInfo]
+    createModerator(moderator: ModeratorInput): [Moderator],
+    updateModerator(id: ID!, moderator: ModeratorInput): Moderator,
+    deleteModerator(id: ID!): [Moderator],
+    deleteModerators: [Moderator]
 }

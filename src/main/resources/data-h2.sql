@@ -1,8 +1,8 @@
 insert into roles
     (name)
-values ('moderator'),
-       ('volunteer'),
-       ('company');
+values ('ROLE_MODERATOR'),
+       ('ROLE_VOLUNTEER'),
+       ('ROLE_COMPANY');
 
 insert into users
     (login, password, role_id)
