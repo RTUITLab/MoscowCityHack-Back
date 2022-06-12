@@ -7,7 +7,6 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
-import java.time.Instant;
 
 @Entity
 @Getter
@@ -23,5 +22,5 @@ public class PointsHistory extends AbstractEntity {
 
     @CreatedDate
     @Column(name = "created_date", nullable = false, updatable = false)
-    private Instant createdDate;
+    private Long createdDate;
 }

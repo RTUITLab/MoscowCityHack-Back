@@ -2,7 +2,7 @@ type Volunteer {
     id: ID!,
     name: String,
     surname: String,
-    birthDate: Date,
+    birthDate: Long,
     photoUrl: String,
     user: User
 }
@@ -10,7 +10,7 @@ type Volunteer {
 input VolunteerInput {
     name: String,
     surname: String,
-    birthDate: Date,
+    birthDate: Long,
     user: UserInput
 }
 

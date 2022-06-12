@@ -16,4 +16,8 @@ public class ScalarConfig {
     public GraphQLScalarType offsetDateTimeScalar() {
         return ExtendedScalars.DateTime;
     }
+    @Bean
+    public GraphQLScalarType longScalar() {
+        return ExtendedScalars.GraphQLLong;
+    }
 }

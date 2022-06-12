@@ -1,5 +1,5 @@
 type AchievementHistory {
     id: ID!,
     achievement: Achievement
-    createdDate: Date
+    createdDate: Long
 }

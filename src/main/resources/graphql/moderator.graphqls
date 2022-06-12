@@ -1,10 +1,10 @@
-scalar Date
+scalar Long
 
 type Moderator {
     id: ID!,
     name: String,
     surname: String,
-    birthDate: Date,
+    birthDate: Long,
     photoUrl: String,
     user: User
 }
@@ -12,7 +12,7 @@ type Moderator {
 input ModeratorInput {
     name: String,
     surname: String,
-    birthDate: Date,
+    birthDate: Long,
     user: UserInput
 }
 

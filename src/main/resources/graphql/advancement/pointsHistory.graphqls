@@ -2,5 +2,5 @@ type PointsHistory {
     id: ID!,
     advancement: Advancement,
     points: Int,
-    createdDate: Date
+    createdDate: Long
 }
