@@ -2,7 +2,6 @@ package com.example.moscowcityhackback.graphql.mutations;
 
 import com.example.moscowcityhackback.entity.profile.Volunteer;
 import com.example.moscowcityhackback.graphql.queries.CredentialsQuery;
-import com.example.moscowcityhackback.services.UserService;
 import com.example.moscowcityhackback.services.VolunteerService;
 import com.example.moscowcityhackback.services.utils.UsernameFromTokenParser;
 import graphql.kickstart.tools.GraphQLMutationResolver;
