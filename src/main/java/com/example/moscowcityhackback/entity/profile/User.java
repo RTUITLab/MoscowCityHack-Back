@@ -12,6 +12,7 @@ import javax.persistence.*;
 @ToString
 @Table(name = "users")
 public class User extends AbstractEntity {
+    @Column(unique = true)
     private String login;
     private String password;
 
