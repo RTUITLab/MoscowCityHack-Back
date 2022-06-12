@@ -51,7 +51,6 @@ public class Event extends AbstractEntity {
     private List<User> participants;
     @OneToOne
     private User owner;
-    // TODO cascadeType заглушка убрать ее перед пушем
 
     @ManyToMany
     @LazyCollection(LazyCollectionOption.FALSE)

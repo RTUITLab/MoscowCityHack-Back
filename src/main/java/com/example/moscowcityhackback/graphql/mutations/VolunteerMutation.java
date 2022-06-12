@@ -1,6 +1,8 @@
 package com.example.moscowcityhackback.graphql.mutations;
 
 import com.example.moscowcityhackback.entity.profile.Volunteer;
+import com.example.moscowcityhackback.entity.profile.Volunteer;
+import com.example.moscowcityhackback.graphql.queries.CredentialsQuery;
 import com.example.moscowcityhackback.services.VolunteerService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +29,9 @@ public class VolunteerMutation implements GraphQLMutationResolver {
 
     public List<Volunteer> deleteVolunteers() {
         return volunteerService.deleteAll();
+    }
+
+    public CredentialsQuery.Credentials registerAuthorizeVol(Volunteer volunteer) {
+        return volunteerService.createAndAuthorize(volunteer);
     }
 }

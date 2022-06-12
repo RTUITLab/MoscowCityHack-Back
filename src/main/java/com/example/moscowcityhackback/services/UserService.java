@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.moscowcityhackback.entity.profile.User;
+import com.example.moscowcityhackback.graphql.queries.CredentialsQuery;
 import com.example.moscowcityhackback.repositories.RoleRepository;
 import com.example.moscowcityhackback.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -60,5 +62,19 @@ public class UserService extends AbstractService<User, UserRepository> implement
                 .build();
         DecodedJWT jwt = verifier.verify(token);
         return repository.findByLogin(jwt.getSubject());
+    }
+
+    public CredentialsQuery.Credentials authorize(String login, String password) {
+        CredentialsQuery.Credentials credentials;
+        User user = repository.findByLogin(login);
+        if (user !=null && BCrypt.checkpw(password, user.getPassword())) {
+            Algorithm algorithm = Algorithm.HMAC256(jwtSecret.getBytes());
+            String userRole = user.getRole().getName();
+            String access_token = JWT.create().withSubject(login).withClaim("roles", List.of(userRole)).sign(algorithm);
+            credentials = new CredentialsQuery.Credentials(access_token, userRole);
+        }
+        else
+            credentials = new CredentialsQuery.Credentials("incorrect login or password", "incorrect login or password");
+        return credentials;
     }
 }

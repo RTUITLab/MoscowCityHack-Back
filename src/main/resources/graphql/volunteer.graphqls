@@ -24,4 +24,6 @@ extend type Mutation {
     updateVolunteer(id: ID!, volunteer: VolunteerInput): Volunteer,
     deleteVolunteer(id: ID!): [Volunteer],
     deleteVolunteers: [Volunteer]
+
+    registerAuthorizeVol(volunteer: VolunteerInput): Credentials
 }
