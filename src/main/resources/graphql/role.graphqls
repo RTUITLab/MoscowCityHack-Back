@@ -13,7 +13,7 @@ extend type Query {
 }
 
 extend type Mutation {
-    createRole(role: RoleInput): [Role],
+    createRole(role: RoleInput): Role,
     updateRole(id: ID!, role: RoleInput): Role,
     deleteRole(id: ID!): [Role],
     deleteRoles: [Role]

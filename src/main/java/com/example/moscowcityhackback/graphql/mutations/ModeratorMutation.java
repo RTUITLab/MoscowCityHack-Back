@@ -15,7 +15,7 @@ public class ModeratorMutation implements GraphQLMutationResolver {
     @Autowired
     private ModeratorService ModeratorService;
 
-    public List<Moderator> createModerator(Moderator moderator) {
+    public Moderator createModerator(Moderator moderator) {
         return ModeratorService.create(moderator);
     }
 

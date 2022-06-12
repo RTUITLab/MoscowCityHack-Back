@@ -22,11 +22,11 @@ public class CompanyService extends AbstractService<Company, CompanyInfoReposito
     }
 
     @Override
-    public List<Company> create(Company company) {
+    public Company create(Company company) {
         company.getUser().setPassword(passwordEncoder.encode(company.getUser().getPassword()));
         // TODO так себе костыль
         company.getUser().setRole(roleRepository.findByName(company.getUser().getRole().getName()));
         repository.save(company);
-        return repository.findAll();
+        return repository.getReferenceById(company.getId());
     }
 }

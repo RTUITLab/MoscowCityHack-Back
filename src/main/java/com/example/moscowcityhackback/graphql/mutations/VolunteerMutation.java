@@ -13,7 +13,7 @@ public class VolunteerMutation implements GraphQLMutationResolver {
     @Autowired
     private VolunteerService volunteerService;
 
-    public List<Volunteer> createVolunteer(Volunteer volunteer) {
+    public Volunteer createVolunteer(Volunteer volunteer) {
         return volunteerService.create(volunteer);
     }
 

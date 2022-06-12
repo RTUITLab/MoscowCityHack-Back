@@ -4,6 +4,7 @@ import com.example.moscowcityhackback.entity.AbstractEntity;
 import com.example.moscowcityhackback.repositories.CommonRepository;
 import lombok.AllArgsConstructor;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,9 +20,9 @@ public class AbstractService<E extends AbstractEntity, R extends CommonRepositor
         return repository.getReferenceById(id);
     }
 
-    public List<E> create(E e) {
+    public E create(E e) {
         repository.save(e);
-        return repository.findAll();
+        return repository.getReferenceById(e.getId());
     }
 
     public E update(long id, E newE) {

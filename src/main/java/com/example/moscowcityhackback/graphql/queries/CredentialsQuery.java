@@ -28,8 +28,6 @@ public class CredentialsQuery implements GraphQLQueryResolver {
     @Autowired
     public CredentialsQuery(UserService userService, CompanyService companyService, VolunteerService volunteerService) {
         this.userService = userService;
-//        this.companyService = companyService;
-//        this.volunteerService = volunteerService;
     }
 
     public Credentials authorize(String login, String password) {
@@ -45,18 +43,6 @@ public class CredentialsQuery implements GraphQLQueryResolver {
             credentials = new Credentials("incorrect login or password", "incorrect login or password");
         return credentials;
     }
-
-//    @Transactional
-//    public Credentials registerCompany(String name, User user) {
-//        Role role = roleService.getByName("ROLE_COMPANY");
-//        user.setRole(role);
-//        userService.create(user);
-//        companyService.create(new Company(name, user));
-//    }
-//
-//    public Credentials register() {
-//
-//    }
 
     @AllArgsConstructor
     private static class Credentials {

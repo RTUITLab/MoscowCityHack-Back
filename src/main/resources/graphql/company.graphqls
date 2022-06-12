@@ -17,7 +17,7 @@ type Query {
 }
 
 type Mutation {
-    createCompany(company: CompanyInput): [Company],
+    createCompany(company: CompanyInput): Company,
     updateCompany(id: ID!, company: CompanyInput): Company,
     deleteCompany(id: ID!): [Company],
     deleteCompanies: [Company]
