@@ -23,8 +23,8 @@ type Event {
     title: String
     region: String
     address: String
-    dateStart: Int
-    dateEnd: Int
+    dateStart: Long
+    dateEnd: Long
     taskDescription: [String]
     requirements: [String]
     facilities: [String]
@@ -45,8 +45,8 @@ input EventInput {
     title: String
     region: String
     address: String
-    dateStart: Int
-    dateEnd: Int
+    dateStart: Long
+    dateEnd: Long
     taskDescription: [String]
     requirements: [String]
     facilities: [String]
