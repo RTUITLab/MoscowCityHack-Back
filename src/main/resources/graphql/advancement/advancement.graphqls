@@ -1,0 +1,8 @@
+type Advancement {
+    id: ID!,
+    level: Int,
+    points: Int,
+    pointsHistory: [PointsHistory],
+    achievements: [Achievement]
+    exp: Int
+}

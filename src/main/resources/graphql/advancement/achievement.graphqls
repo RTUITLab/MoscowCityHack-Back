@@ -1,0 +1,6 @@
+type Achievement {
+    id: ID!,
+    name: String,
+    advancements: [Advancement]
+    achievementHistory: [AchievementHistory],
+}
