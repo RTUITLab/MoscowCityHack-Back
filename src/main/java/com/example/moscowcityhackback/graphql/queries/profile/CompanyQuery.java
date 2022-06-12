@@ -1,4 +1,4 @@
-package com.example.moscowcityhackback.graphql.queries;
+package com.example.moscowcityhackback.graphql.queries.profile;
 
 import com.example.moscowcityhackback.entity.profile.Company;
 import com.example.moscowcityhackback.services.CompanyService;

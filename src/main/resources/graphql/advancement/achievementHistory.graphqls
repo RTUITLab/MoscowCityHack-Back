@@ -3,3 +3,20 @@ type AchievementHistory {
     achievement: Achievement
     createdDate: Long
 }
+
+input AchievementHistoryInput {
+    achievement: AchievementInput
+    createdDate: Long
+}
+
+extend type Query {
+    getAchievementHistories: [AchievementHistory],
+    getAchievementHistory(id: ID!): AchievementHistory
+}
+
+extend type Mutation {
+    createAchievementHistory(achievementHistory: AchievementHistoryInput): AchievementHistory,
+    updateAchievementHistory(id: ID!, achievementHistory: AchievementHistoryInput): AchievementHistory,
+    deleteAchievementHistory(id: ID!): [AchievementHistory],
+    deleteAchievementHistories: [AchievementHistory]
+}

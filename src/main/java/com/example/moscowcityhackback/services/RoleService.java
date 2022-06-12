@@ -1,7 +1,7 @@
 package com.example.moscowcityhackback.services;
 
 import com.example.moscowcityhackback.entity.profile.Role;
-import com.example.moscowcityhackback.repositories.RoleRepository;
+import com.example.moscowcityhackback.repositories.profile.RoleRepository;
 import org.springframework.stereotype.Service;
 
 @Service

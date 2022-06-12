@@ -4,3 +4,21 @@ type PointsHistory {
     points: Int,
     createdDate: Long
 }
+
+input PointsHistoryInput {
+    advancement: AdvancementInput,
+    points: Int,
+    createdDate: Long
+}
+
+extend type Query {
+    getPointsHistories: [PointsHistory],
+    getPointsHistory(id: ID!): PointsHistory
+}
+
+extend type Mutation {
+    createPointsHistory(pointsHistory: PointsHistoryInput): PointsHistory,
+    updatePointsHistory(id: ID!, pointsHistory: PointsHistoryInput): PointsHistory,
+    deletePointsHistory(id: ID!): [PointsHistory],
+    deletePointsHistories: [PointsHistory]
+}

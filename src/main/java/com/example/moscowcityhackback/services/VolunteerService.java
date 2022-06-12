@@ -2,9 +2,9 @@ package com.example.moscowcityhackback.services;
 
 import com.example.moscowcityhackback.entity.profile.User;
 import com.example.moscowcityhackback.entity.profile.Volunteer;
-import com.example.moscowcityhackback.graphql.queries.CredentialsQuery;
-import com.example.moscowcityhackback.repositories.RoleRepository;
-import com.example.moscowcityhackback.repositories.VolunteerRepository;
+import com.example.moscowcityhackback.graphql.queries.profile.CredentialsQuery;
+import com.example.moscowcityhackback.repositories.profile.RoleRepository;
+import com.example.moscowcityhackback.repositories.profile.VolunteerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

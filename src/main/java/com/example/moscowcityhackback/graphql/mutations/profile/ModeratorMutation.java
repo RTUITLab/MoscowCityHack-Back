@@ -1,7 +1,7 @@
-package com.example.moscowcityhackback.graphql.mutations;
+package com.example.moscowcityhackback.graphql.mutations.profile;
 
 import com.example.moscowcityhackback.entity.profile.Moderator;
-import com.example.moscowcityhackback.graphql.queries.CredentialsQuery;
+import com.example.moscowcityhackback.graphql.queries.profile.CredentialsQuery;
 import com.example.moscowcityhackback.services.ModeratorService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import org.springframework.beans.factory.annotation.Autowired;

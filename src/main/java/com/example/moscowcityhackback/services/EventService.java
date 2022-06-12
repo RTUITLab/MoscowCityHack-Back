@@ -2,10 +2,9 @@ package com.example.moscowcityhackback.services;
 
 import com.example.moscowcityhackback.entity.event.Event;
 import com.example.moscowcityhackback.entity.profile.User;
-import com.example.moscowcityhackback.repositories.EventRepository;
+import com.example.moscowcityhackback.repositories.event.EventRepository;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
