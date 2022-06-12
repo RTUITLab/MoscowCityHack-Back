@@ -1,5 +1,6 @@
-package com.example.moscowcityhackback.entity;
+package com.example.moscowcityhackback.entity.event;
 
+import com.example.moscowcityhackback.entity.AbstractEntity;
 import com.example.moscowcityhackback.entity.profile.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,6 +33,7 @@ public class Event extends AbstractEntity {
     private String email;
     private Integer currentAmount;
     private Integer maxAmount;
+    private boolean online;
     @ManyToMany
     private List<User> participants;
     @OneToOne

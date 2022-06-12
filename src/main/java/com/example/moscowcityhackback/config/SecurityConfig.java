@@ -53,7 +53,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
     }
-
-    @Value("${jwt.secret}")
-    private String jwtSecret;
 }

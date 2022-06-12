@@ -1,10 +1,10 @@
 package com.example.moscowcityhackback.graphql.mutations;
 
-import com.example.moscowcityhackback.entity.Event;
+import com.example.moscowcityhackback.entity.event.Event;
 import com.example.moscowcityhackback.services.EventService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
-import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -18,18 +18,22 @@ public class EventMutation implements GraphQLMutationResolver {
         this.eventService = eventService;
     }
 
+    @PreAuthorize("isAuthenticated()")
     public List<Event> createEvent(Event event) {
         return eventService.create(event);
     }
 
+    @PreAuthorize("isAuthenticated()")
     public Event updateEvent(long id, Event event) {
         return eventService.update(id, event);
     }
 
+    @PreAuthorize("isAuthenticated()")
     public List<Event> deleteEvent(long id) {
         return eventService.delete(id);
     }
 
+    @PreAuthorize("isAuthenticated()")
     public List<Event> deleteEvents() {
         return eventService.deleteAll();
     }
