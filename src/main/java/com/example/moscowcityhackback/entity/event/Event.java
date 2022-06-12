@@ -51,6 +51,7 @@ public class Event extends AbstractEntity {
     @ManyToMany
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<User> participants;
+
     @OneToOne
     private User owner;
 

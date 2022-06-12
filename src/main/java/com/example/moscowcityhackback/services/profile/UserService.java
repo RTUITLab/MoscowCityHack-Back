@@ -1,4 +1,4 @@
-package com.example.moscowcityhackback.services;
+package com.example.moscowcityhackback.services.profile;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -8,6 +8,7 @@ import com.example.moscowcityhackback.entity.profile.User;
 import com.example.moscowcityhackback.graphql.queries.profile.CredentialsQuery;
 import com.example.moscowcityhackback.repositories.profile.RoleRepository;
 import com.example.moscowcityhackback.repositories.profile.UserRepository;
+import com.example.moscowcityhackback.services.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

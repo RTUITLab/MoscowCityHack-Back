@@ -20,8 +20,8 @@ extend type Query {
     getModerators: [Moderator],
     getModerator(id: ID!): Moderator
 
-    prGetModerators: [Moderator],
-    prGetModerator(id: ID!): Moderator
+    unprGetModerators: [Moderator],
+    unprGetModerator(id: ID!): Moderator
 }
 
 extend type Mutation {
@@ -30,10 +30,10 @@ extend type Mutation {
     deleteModerator(id: ID!): [Moderator],
     deleteModerators: [Moderator]
 
-    prCreateModerator(moderator: ModeratorInput): Moderator,
-    prUpdateModerator(id: ID!, moderator: ModeratorInput): Moderator,
-    prDeleteModerator(id: ID!): [Moderator],
-    prDeleteModerators: [Moderator]
+    unprCreateModerator(moderator: ModeratorInput): Moderator,
+    unprUpdateModerator(id: ID!, moderator: ModeratorInput): Moderator,
+    unprDeleteModerator(id: ID!): [Moderator],
+    unprDeleteModerators: [Moderator]
 
     registerAuthorizeMod(moderator: ModeratorInput): Credentials
 }

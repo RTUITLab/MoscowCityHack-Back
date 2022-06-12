@@ -2,7 +2,7 @@ package com.example.moscowcityhackback.graphql.mutations.profile;
 
 import com.example.moscowcityhackback.entity.profile.Volunteer;
 import com.example.moscowcityhackback.graphql.queries.profile.CredentialsQuery;
-import com.example.moscowcityhackback.services.VolunteerService;
+import com.example.moscowcityhackback.services.profile.VolunteerService;
 import com.example.moscowcityhackback.services.utils.UsernameFromTokenParser;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import graphql.schema.DataFetchingEnvironment;
@@ -24,44 +24,44 @@ public class VolunteerMutation implements GraphQLMutationResolver {
         this.volunteerService = volunteerService;
     }
 
-    public Volunteer createVolunteer(Volunteer volunteer) {
+    public Volunteer unprCreateVolunteer(Volunteer volunteer) {
         return volunteerService.create(volunteer);
     }
 
-    public Volunteer updateVolunteer(long id, Volunteer volunteer) {
+    public Volunteer unprUpdateVolunteer(long id, Volunteer volunteer) {
         return volunteerService.update(id, volunteer);
     }
 
-    public List<Volunteer> deleteVolunteer(long id) {
+    public List<Volunteer> unprDeleteVolunteer(long id) {
         return volunteerService.delete(id);
     }
 
-    public List<Volunteer> deleteVolunteers() {
+    public List<Volunteer> unprDeleteVolunteers() {
         return volunteerService.deleteAll();
     }
 
+    @PreAuthorize("isAnonymous()")
     public CredentialsQuery.Credentials registerAuthorizeVol(Volunteer volunteer) {
         return volunteerService.createAndAuthorize(volunteer);
     }
 
-    @PreAuthorize("isAnonymous()")
-    public Volunteer prCreateVolunteer(Volunteer volunteer) {
+    public Volunteer createVolunteer(Volunteer volunteer) {
         return volunteerService.create(volunteer);
     }
 
     @PreAuthorize("hasRole('VOLUNTEER')")
     @Transactional
-    public Volunteer prUpdateVolunteer(long id, Volunteer volunteer, DataFetchingEnvironment env) throws Exception {
+    public Volunteer updateVolunteer(long id, Volunteer volunteer, DataFetchingEnvironment env) throws Exception {
         return volunteerService.updateByIdAndUser(id, volunteer, usernameParser.getUserFromRequest(env));
     }
 
     @PreAuthorize("hasRole('MODERATOR')")
-    public List<Volunteer> prDeleteVolunteer(long id) {
+    public List<Volunteer> deleteVolunteer(long id) {
         return volunteerService.delete(id);
     }
 
     @PreAuthorize("hasRole('MODERATOR')")
-    public List<Volunteer> prDeleteVolunteers() {
+    public List<Volunteer> deleteVolunteers() {
         return volunteerService.deleteAll();
     }
 }

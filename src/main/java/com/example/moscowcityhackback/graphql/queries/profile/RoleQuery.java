@@ -1,7 +1,7 @@
 package com.example.moscowcityhackback.graphql.queries.profile;
 
 import com.example.moscowcityhackback.entity.profile.Role;
-import com.example.moscowcityhackback.services.RoleService;
+import com.example.moscowcityhackback.services.profile.RoleService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

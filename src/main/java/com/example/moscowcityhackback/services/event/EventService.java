@@ -1,8 +1,9 @@
-package com.example.moscowcityhackback.services;
+package com.example.moscowcityhackback.services.event;
 
 import com.example.moscowcityhackback.entity.event.Event;
 import com.example.moscowcityhackback.entity.profile.User;
 import com.example.moscowcityhackback.repositories.event.EventRepository;
+import com.example.moscowcityhackback.services.AbstractService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

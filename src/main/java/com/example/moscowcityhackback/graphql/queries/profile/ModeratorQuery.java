@@ -1,7 +1,7 @@
 package com.example.moscowcityhackback.graphql.queries.profile;
 
 import com.example.moscowcityhackback.entity.profile.Moderator;
-import com.example.moscowcityhackback.services.ModeratorService;
+import com.example.moscowcityhackback.services.profile.ModeratorService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,21 +14,21 @@ public class ModeratorQuery implements GraphQLQueryResolver {
     @Autowired
     private ModeratorService moderatorService;
 
-    public List<Moderator> getModerators() {
+    public List<Moderator> unprGetModerators() {
         return moderatorService.getAll();
     }
 
-    public Moderator getModerator(long id) {
+    public Moderator unprGetModerator(long id) {
         return moderatorService.getById(id);
     }
 
     @PreAuthorize("hasRole('MODERATOR')")
-    public List<Moderator> prGetModerators() {
+    public List<Moderator> getModerators() {
         return moderatorService.getAll();
     }
 
     @PreAuthorize("hasRole('MODERATOR')")
-    public Moderator prGetModerator(long id) {
+    public Moderator getModerator(long id) {
         return moderatorService.getById(id);
     }
 }

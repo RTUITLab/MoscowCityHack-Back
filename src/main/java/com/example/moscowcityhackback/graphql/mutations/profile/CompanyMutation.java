@@ -2,7 +2,7 @@ package com.example.moscowcityhackback.graphql.mutations.profile;
 
 import com.example.moscowcityhackback.entity.profile.Company;
 import com.example.moscowcityhackback.graphql.queries.profile.CredentialsQuery;
-import com.example.moscowcityhackback.services.CompanyService;
+import com.example.moscowcityhackback.services.profile.CompanyService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;

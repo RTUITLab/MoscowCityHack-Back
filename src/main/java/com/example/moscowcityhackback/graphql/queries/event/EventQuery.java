@@ -1,8 +1,7 @@
 package com.example.moscowcityhackback.graphql.queries.event;
 
 import com.example.moscowcityhackback.entity.event.Event;
-import com.example.moscowcityhackback.entity.profile.User;
-import com.example.moscowcityhackback.services.EventService;
+import com.example.moscowcityhackback.services.event.EventService;
 import com.example.moscowcityhackback.services.utils.UsernameFromTokenParser;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import graphql.schema.DataFetchingEnvironment;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Component
@@ -24,21 +22,21 @@ public class EventQuery implements GraphQLQueryResolver {
         this.usernameParser = usernameParser;
     }
 
-    public List<Event> getEvents() {
+    public List<Event> unprGetEvents() {
         return eventService.getAll();
     }
 
-    public Event getEvent(long id) {
+    public Event unprGetEvent(long id) {
         return eventService.getById(id);
     }
 
     @PreAuthorize("isAuthenticated()")
-    public List<Event> prGetEvents(DataFetchingEnvironment env) {
+    public List<Event> getEvents(DataFetchingEnvironment env) {
         return eventService.getAllByOwner(usernameParser.getUserFromRequest(env));
     }
 
     @PreAuthorize("isAuthenticated()")
-    public Event prGetEvent(long id, DataFetchingEnvironment env) {
+    public Event getEvent(long id, DataFetchingEnvironment env) {
         return eventService.getByIdAndOwner(id, usernameParser.getUserFromRequest(env));
     }
 }

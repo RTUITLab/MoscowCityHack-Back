@@ -18,8 +18,8 @@ extend type Query {
     getVolunteers: [Volunteer],
     getVolunteer(id: ID!): Volunteer,
 
-    prGetVolunteers: [Volunteer],
-    prGetVolunteer(id: ID!): Volunteer
+    unprGetVolunteers: [Volunteer],
+    unprGetVolunteer(id: ID!): Volunteer
 }
 
 extend type Mutation {
@@ -28,10 +28,10 @@ extend type Mutation {
     deleteVolunteer(id: ID!): [Volunteer],
     deleteVolunteers: [Volunteer],
 
-    prCreateVolunteer(volunteer: VolunteerInput): Volunteer,
-    prUpdateVolunteer(id: ID!, volunteer: VolunteerInput): Volunteer,
-    prDeleteVolunteer(id: ID!): [Volunteer],
-    prDeleteVolunteers: [Volunteer]
+    unprCreateVolunteer(volunteer: VolunteerInput): Volunteer,
+    unprUpdateVolunteer(id: ID!, volunteer: VolunteerInput): Volunteer,
+    unprDeleteVolunteer(id: ID!): [Volunteer],
+    unprDeleteVolunteers: [Volunteer]
 
     registerAuthorizeVol(volunteer: VolunteerInput): Credentials
 }
