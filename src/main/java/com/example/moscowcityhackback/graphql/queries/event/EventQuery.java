@@ -29,7 +29,7 @@ public class EventQuery implements GraphQLQueryResolver {
 
     @PreAuthorize("isAuthenticated()")
     public List<Event> getEventsByToken(DataFetchingEnvironment env) {
-        return eventService.getAllByOwner(usernameParser.getUserFromRequest(env));
+        return eventService.getParticipatedEvents(usernameParser.getUserFromRequest(env));
     }
 
     @PreAuthorize("isAuthenticated()")

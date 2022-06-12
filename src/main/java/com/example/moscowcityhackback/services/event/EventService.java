@@ -32,4 +32,8 @@ public class EventService extends AbstractService<Event, EventRepository> {
         return repository.findAllByOwner(owner);
     }
 
+    public List<Event> getParticipatedEvents(User user) {
+        return repository.findAllByParticipantsContaining(user);
+    }
+
 }
