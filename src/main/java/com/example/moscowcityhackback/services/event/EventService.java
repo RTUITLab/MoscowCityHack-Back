@@ -59,7 +59,7 @@ public class EventService extends AbstractService<Event, EventRepository> {
         }
         event.setDirections(updatedDirections);
 
-        event.setOwner(userRepository.findByLogin(event.getOwner().getLogin()));
+//        event.setOwner(userRepository.findByLogin(event.getOwner().getLogin()));
 
         List<User> users = event.getParticipants();
         List<User> updatedUsers = new ArrayList<>();

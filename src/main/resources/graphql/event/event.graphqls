@@ -69,6 +69,7 @@ extend type Query {
 }
 
 extend type Mutation {
+    createEventWithToken(event: EventInput): Event
     createEvent(event: EventInput): Event
     updateEvent(id: ID!, event: EventInput): Event
     deleteEvent(id: ID!): String
