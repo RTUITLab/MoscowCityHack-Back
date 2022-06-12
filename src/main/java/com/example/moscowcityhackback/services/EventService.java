@@ -2,7 +2,10 @@ package com.example.moscowcityhackback.services;
 
 import com.example.moscowcityhackback.entity.event.Event;
 import com.example.moscowcityhackback.entity.profile.User;
+import com.example.moscowcityhackback.entity.specification.SearchRequest;
+import com.example.moscowcityhackback.entity.specification.SearchSpecification;
 import com.example.moscowcityhackback.repositories.event.EventRepository;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +14,12 @@ import java.util.List;
 public class EventService extends AbstractService<Event, EventRepository> {
     public EventService(EventRepository repository) {
         super(repository);
+    }
+
+    public List<Event> searchEvents(SearchRequest request){
+        SearchSpecification<Event> specification = new SearchSpecification<>(request);
+        Pageable pageable = SearchSpecification.getPageable(request.getPage(), request.getSize());
+        return repository.findAll(specification, pageable).getContent();
     }
 
     public List<Event> getAllByOwner(User owner) {

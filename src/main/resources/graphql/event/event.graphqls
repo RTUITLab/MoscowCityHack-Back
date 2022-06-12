@@ -62,9 +62,29 @@ input EventInput {
     published: Boolean
 }
 
+input FilterRequest {
+    key: String
+    operator: String
+    fieldType: String
+    value: String
+}
+
+input SortRequest {
+    key: String
+    direction: String
+}
+
+input SearchRequest {
+    filters: FilterRequest
+    sorts: SortRequest
+    page: Int
+    size: Int
+}
+
 extend type Query {
     getEvents: [Event],
     getEvent(id: ID!): Event
+    searchEvents(search: SearchRequest): [Event]
 
     prGetEvents: [Event],
     prGetEvent(id: ID!): Event
