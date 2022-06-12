@@ -3,7 +3,7 @@ package com.example.moscowcityhackback.graphql.mutations.profile;
 import com.example.moscowcityhackback.entity.profile.Volunteer;
 import com.example.moscowcityhackback.graphql.queries.profile.CredentialsQuery;
 import com.example.moscowcityhackback.services.profile.VolunteerService;
-import com.example.moscowcityhackback.services.utils.UsernameFromTokenParser;
+import com.example.moscowcityhackback.services.utils.TokenParser;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +15,11 @@ import java.util.List;
 
 @Component
 public class VolunteerMutation implements GraphQLMutationResolver {
-    private final UsernameFromTokenParser usernameParser;
+    private final TokenParser usernameParser;
     private final VolunteerService volunteerService;
 
     @Autowired
-    public VolunteerMutation(UsernameFromTokenParser usernameParser, VolunteerService volunteerService) {
+    public VolunteerMutation(TokenParser usernameParser, VolunteerService volunteerService) {
         this.usernameParser = usernameParser;
         this.volunteerService = volunteerService;
     }

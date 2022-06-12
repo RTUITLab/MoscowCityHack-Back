@@ -2,7 +2,7 @@ package com.example.moscowcityhackback.graphql.mutations.event;
 
 import com.example.moscowcityhackback.entity.event.Event;
 import com.example.moscowcityhackback.services.event.EventService;
-import com.example.moscowcityhackback.services.utils.UsernameFromTokenParser;
+import com.example.moscowcityhackback.services.utils.TokenParser;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +15,10 @@ import java.util.List;
 @Component
 public class EventMutation implements GraphQLMutationResolver {
     private final EventService eventService;
-    private final UsernameFromTokenParser usernameParser;
+    private final TokenParser usernameParser;
 
     @Autowired
-    public EventMutation(EventService eventService, UsernameFromTokenParser usernameParser) {
+    public EventMutation(EventService eventService, TokenParser usernameParser) {
         this.eventService = eventService;
         this.usernameParser = usernameParser;
     }

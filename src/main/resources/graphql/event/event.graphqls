@@ -64,10 +64,8 @@ input EventInput {
 
 extend type Query {
     getEvents: [Event],
-    getEvent(id: ID!): Event
-
-    unprGetEvents: [Event],
-    unprGetEvent(id: ID!): Event
+    getEventsByToken: [Event]
+    getEventByTokenAndId(id: ID!): Event
 }
 
 extend type Mutation {
@@ -75,11 +73,6 @@ extend type Mutation {
     updateEvent(id: ID!, event: EventInput): Event
     deleteEvent(id: ID!): String
     deleteEvents: String
-
-    unprCreateEvent(event: EventInput): Event
-    unprUpdateEvent(id: ID!, event: EventInput): Event
-    unprDeleteEvent(id: ID!): [Event]
-    unprDeleteEvents: [Event]
 }
 
 

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UsernameFromTokenParser {
+public class TokenParser {
     @Autowired
     private UserService userService;
     public User getUserFromRequest(DataFetchingEnvironment env) {

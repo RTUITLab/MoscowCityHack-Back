@@ -14,14 +14,6 @@ public class ModeratorQuery implements GraphQLQueryResolver {
     @Autowired
     private ModeratorService moderatorService;
 
-    public List<Moderator> unprGetModerators() {
-        return moderatorService.getAll();
-    }
-
-    public Moderator unprGetModerator(long id) {
-        return moderatorService.getById(id);
-    }
-
     @PreAuthorize("hasRole('MODERATOR')")
     public List<Moderator> getModerators() {
         return moderatorService.getAll();

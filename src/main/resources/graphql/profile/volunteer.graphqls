@@ -17,9 +17,6 @@ input VolunteerInput {
 extend type Query {
     getVolunteers: [Volunteer],
     getVolunteer(id: ID!): Volunteer,
-
-    unprGetVolunteers: [Volunteer],
-    unprGetVolunteer(id: ID!): Volunteer
 }
 
 extend type Mutation {
@@ -27,11 +24,6 @@ extend type Mutation {
     updateVolunteer(id: ID!, volunteer: VolunteerInput): Volunteer,
     deleteVolunteer(id: ID!): [Volunteer],
     deleteVolunteers: [Volunteer],
-
-    unprCreateVolunteer(volunteer: VolunteerInput): Volunteer,
-    unprUpdateVolunteer(id: ID!, volunteer: VolunteerInput): Volunteer,
-    unprDeleteVolunteer(id: ID!): [Volunteer],
-    unprDeleteVolunteers: [Volunteer]
 
     registerAuthorizeVol(volunteer: VolunteerInput): Credentials
 }

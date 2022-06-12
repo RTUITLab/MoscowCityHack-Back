@@ -18,6 +18,7 @@ input AdvancementInput {
 extend type Query {
     getAdvancements: [Advancement],
     getAdvancement(id: ID!): Advancement
+    getAdvancementByToken: Advancement
 }
 
 extend type Mutation {

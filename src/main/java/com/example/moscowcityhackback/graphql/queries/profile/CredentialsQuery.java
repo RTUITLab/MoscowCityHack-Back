@@ -1,12 +1,11 @@
 package com.example.moscowcityhackback.graphql.queries.profile;
 
 import com.example.moscowcityhackback.entity.profile.Company;
-import com.example.moscowcityhackback.entity.profile.User;
 import com.example.moscowcityhackback.entity.profile.Volunteer;
 import com.example.moscowcityhackback.services.profile.CompanyService;
 import com.example.moscowcityhackback.services.profile.UserService;
 import com.example.moscowcityhackback.services.profile.VolunteerService;
-import com.example.moscowcityhackback.services.utils.UsernameFromTokenParser;
+import com.example.moscowcityhackback.services.utils.TokenParser;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import graphql.schema.DataFetchingEnvironment;
 import lombok.AllArgsConstructor;
@@ -16,12 +15,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class CredentialsQuery implements GraphQLQueryResolver {
     private final UserService userService;
-    private final UsernameFromTokenParser tokenParser;
+    private final TokenParser tokenParser;
     private final CompanyService companyService;
     private final VolunteerService volunteerService;
 
     @Autowired
-    public CredentialsQuery(UserService userService, CompanyService companyService, VolunteerService volunteerService, UsernameFromTokenParser tokenParser) {
+    public CredentialsQuery(UserService userService, CompanyService companyService, VolunteerService volunteerService, TokenParser tokenParser) {
         this.userService = userService;
         this.tokenParser = tokenParser;
         this.companyService = companyService;
