@@ -62,10 +62,34 @@ input EventInput {
     published: Boolean
 }
 
+input FilterRequest {
+    key: String
+    operator: String
+    fieldType: String
+    value: String
+}
+
+input SortRequest {
+    key: String
+    direction: String
+}
+
+input SearchRequest {
+    filters: FilterRequest
+    sorts: SortRequest
+    page: Int
+    size: Int
+}
+
 extend type Query {
     getEvents: [Event],
     getEventsByToken: [Event]
     getEventByTokenAndId(id: ID!): Event
+    getEvent(id: ID!): Event
+    searchEvents(search: SearchRequest): [Event]
+
+    prGetEvents: [Event],
+    prGetEvent(id: ID!): Event
 }
 
 extend type Mutation {
@@ -74,6 +98,11 @@ extend type Mutation {
     updateEvent(id: ID!, event: EventInput): Event
     deleteEvent(id: ID!): String
     deleteEvents: String
+
+    prCreateEvent(event: EventInput): Event
+    prUpdateEvent(id: ID!, event: EventInput): Event
+    prDeleteEvent(id: ID!): [Event]
+    prDeleteEvents: [Event]
 }
 
 
