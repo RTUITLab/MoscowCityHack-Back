@@ -1,4 +1,4 @@
-package com.example.moscowcityhackback.graphql.queries;
+package com.example.moscowcityhackback.graphql.queries.event;
 
 import com.example.moscowcityhackback.entity.event.Event;
 import com.example.moscowcityhackback.entity.profile.User;

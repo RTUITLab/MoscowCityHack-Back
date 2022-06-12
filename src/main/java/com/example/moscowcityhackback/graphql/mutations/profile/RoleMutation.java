@@ -1,4 +1,4 @@
-package com.example.moscowcityhackback.graphql.mutations;
+package com.example.moscowcityhackback.graphql.mutations.profile;
 
 import com.example.moscowcityhackback.entity.profile.Role;
 import com.example.moscowcityhackback.services.RoleService;

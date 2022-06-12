@@ -1,4 +1,4 @@
-package com.example.moscowcityhackback.graphql.mutations;
+package com.example.moscowcityhackback.graphql.mutations.event;
 
 import com.example.moscowcityhackback.entity.event.Event;
 import com.example.moscowcityhackback.services.EventService;

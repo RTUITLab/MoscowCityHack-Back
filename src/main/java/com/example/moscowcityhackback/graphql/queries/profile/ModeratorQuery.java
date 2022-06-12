@@ -1,4 +1,4 @@
-package com.example.moscowcityhackback.graphql.queries;
+package com.example.moscowcityhackback.graphql.queries.profile;
 
 import com.example.moscowcityhackback.entity.profile.Moderator;
 import com.example.moscowcityhackback.services.ModeratorService;

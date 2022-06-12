@@ -13,7 +13,7 @@ public class AdvancementQuery implements GraphQLQueryResolver {
     @Autowired
     private AdvancementService advancementService;
 
-    public List<Advancement> getAdvancemenets() {
+    public List<Advancement> getAdvancements() {
         return advancementService.getAll();
     }
 

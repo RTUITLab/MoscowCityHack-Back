@@ -2,5 +2,23 @@ type Achievement {
     id: ID!,
     name: String,
     advancements: [Advancement]
-    achievementHistory: [AchievementHistory],
+    history: [AchievementHistory],
+}
+
+input AchievementInput {
+    name: String,
+    advancements: [AdvancementInput]
+    history: [AchievementHistoryInput],
+}
+
+extend type Query {
+    getAchievements: [Achievement],
+    getAchievement(id: ID!): Achievement
+}
+
+extend type Mutation {
+    createAchievement(achievement: AchievementInput): Achievement,
+    updateAchievement(id: ID!, achievement: AchievementInput): Achievement,
+    deleteAchievement(id: ID!): [Achievement],
+    deleteAchievements: [Achievement]
 }

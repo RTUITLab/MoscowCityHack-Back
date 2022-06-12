@@ -6,3 +6,23 @@ type Advancement {
     achievements: [Achievement]
     exp: Int
 }
+
+input AdvancementInput {
+    level: Int,
+    points: Int,
+    pointsHistory: [PointsHistoryInput],
+    achievements: [AchievementInput]
+    exp: Int
+}
+
+extend type Query {
+    getAdvancements: [Advancement],
+    getAdvancement(id: ID!): Advancement
+}
+
+extend type Mutation {
+    createAdvancement(advancement: AdvancementInput): Advancement,
+    updateAdvancement(id: ID!, advancement: AdvancementInput): Advancement,
+    deleteAdvancement(id: ID!): [Advancement],
+    deleteAdvancements: [Advancement]
+}

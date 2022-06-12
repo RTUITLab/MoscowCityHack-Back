@@ -1,7 +1,7 @@
 package com.example.moscowcityhackback.services;
 
 import com.example.moscowcityhackback.entity.event.Tag;
-import com.example.moscowcityhackback.repositories.TagRepository;
+import com.example.moscowcityhackback.repositories.event.TagRepository;
 import org.springframework.stereotype.Service;
 
 @Service
