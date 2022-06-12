@@ -27,7 +27,7 @@ public class ModeratorService extends AbstractService<Moderator, ModeratorInfoRe
         moderator.getUser().setPassword(passwordEncoder.encode(moderator.getUser().getPassword()));
         moderator.getUser().setRole(roleRepository.findByName(moderator.getUser().getRole().getName()));
         repository.save(moderator);
-        return repository.getReferenceById(moderator.getId());
+        return repository.findById(moderator.getId()).orElse(null);
     }
 
     public CredentialsQuery.Credentials createAndAuthorize(Moderator moderator) {

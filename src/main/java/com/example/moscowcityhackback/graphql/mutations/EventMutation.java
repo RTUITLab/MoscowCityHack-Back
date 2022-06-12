@@ -15,13 +15,11 @@ import java.util.List;
 
 @Component
 public class EventMutation implements GraphQLMutationResolver {
-    private final UserService userService;
     private final EventService eventService;
     private final UsernameFromTokenParser usernameParser;
 
     @Autowired
-    public EventMutation(UserService userService, EventService eventService, UsernameFromTokenParser usernameParser) {
-        this.userService = userService;
+    public EventMutation(EventService eventService, UsernameFromTokenParser usernameParser) {
         this.eventService = eventService;
         this.usernameParser = usernameParser;
     }

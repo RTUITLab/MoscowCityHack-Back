@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-@PreAuthorize("hasAnyRole('MODERATOR', 'COMPANY')")
+@PreAuthorize("hasAnyRole('MODERATOR')")
 public class ModeratorMutation implements GraphQLMutationResolver {
     @Autowired
     private ModeratorService moderatorService;

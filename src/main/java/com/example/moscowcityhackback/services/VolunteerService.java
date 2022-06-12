@@ -1,21 +1,22 @@
 package com.example.moscowcityhackback.services;
 
+import com.example.moscowcityhackback.entity.profile.User;
 import com.example.moscowcityhackback.entity.profile.Volunteer;
 import com.example.moscowcityhackback.graphql.queries.CredentialsQuery;
 import com.example.moscowcityhackback.repositories.RoleRepository;
-import com.example.moscowcityhackback.repositories.VolunteerInfoRepository;
+import com.example.moscowcityhackback.repositories.VolunteerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class VolunteerService extends AbstractService<Volunteer, VolunteerInfoRepository> {
+public class VolunteerService extends AbstractService<Volunteer, VolunteerRepository> {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
 
     @Autowired
-    public VolunteerService(VolunteerInfoRepository repository, UserService userService, PasswordEncoder passwordEncoder1, RoleRepository roleRepository) {
+    public VolunteerService(VolunteerRepository repository, UserService userService, PasswordEncoder passwordEncoder1, RoleRepository roleRepository) {
         super(repository);
         this.userService = userService;
         this.passwordEncoder = passwordEncoder1;
@@ -27,7 +28,7 @@ public class VolunteerService extends AbstractService<Volunteer, VolunteerInfoRe
         volunteer.getUser().setPassword(passwordEncoder.encode(volunteer.getUser().getPassword()));
         volunteer.getUser().setRole(roleRepository.findByName(volunteer.getUser().getRole().getName()));
         repository.save(volunteer);
-        return repository.getReferenceById(volunteer.getId());
+        return repository.findById(volunteer.getId()).orElse(null);
     }
 
     public CredentialsQuery.Credentials createAndAuthorize(Volunteer volunteer) {
@@ -36,5 +37,16 @@ public class VolunteerService extends AbstractService<Volunteer, VolunteerInfoRe
         volunteer.getUser().setRole(roleRepository.findByName(volunteer.getUser().getRole().getName()));
         repository.save(volunteer);
         return userService.authorize(volunteer.getUser().getLogin(), oldPass);
+    }
+
+    public Volunteer updateByIdAndUser(long id, Volunteer volunteer, User user) throws Exception {
+        if(repository.findByIdAndUser(id, user) != null) {
+            volunteer.setId(id);
+            repository.save(volunteer);
+            return repository.getReferenceById(id);
+        }
+        else
+            throw new Exception("Cant find volunteer with given id and username");
+
     }
 }

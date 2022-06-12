@@ -27,7 +27,7 @@ public class CompanyService extends AbstractService<Company, CompanyInfoReposito
         company.getUser().setPassword(passwordEncoder.encode(company.getUser().getPassword()));
         company.getUser().setRole(roleRepository.findByName(company.getUser().getRole().getName()));
         repository.save(company);
-        return repository.getReferenceById(company.getId());
+        return repository.findById(company.getId()).orElse(null);
     }
 
     public CredentialsQuery.Credentials createAndAuthorize(Company company) {

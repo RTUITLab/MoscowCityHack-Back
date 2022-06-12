@@ -18,18 +18,18 @@ public class AbstractService<E extends AbstractEntity, R extends CommonRepositor
     }
 
     public E getById(long id) {
-        return repository.getReferenceById(id);
+        return repository.findById(id).orElse(null);
     }
 
     public E create(E e) {
         repository.save(e);
-        return repository.getReferenceById(e.getId());
+        return repository.findById(e.getId()).orElse(null);
     }
 
     public E update(long id, E newE) {
         newE.setId(id);
         repository.save(newE);
-        return repository.getReferenceById(id);
+        return repository.findById(id).orElse(null);
     }
 
     public List<E> delete(long id) {

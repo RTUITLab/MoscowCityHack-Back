@@ -16,14 +16,22 @@ input VolunteerInput {
 
 extend type Query {
     getVolunteers: [Volunteer],
-    getVolunteer(id: ID!): Volunteer
+    getVolunteer(id: ID!): Volunteer,
+
+    prGetVolunteers: [Volunteer],
+    prGetVolunteer(id: ID!): Volunteer
 }
 
 extend type Mutation {
     createVolunteer(volunteer: VolunteerInput): Volunteer,
     updateVolunteer(id: ID!, volunteer: VolunteerInput): Volunteer,
     deleteVolunteer(id: ID!): [Volunteer],
-    deleteVolunteers: [Volunteer]
+    deleteVolunteers: [Volunteer],
+
+    prCreateVolunteer(volunteer: VolunteerInput): Volunteer,
+    prUpdateVolunteer(id: ID!, volunteer: VolunteerInput): Volunteer,
+    prDeleteVolunteer(id: ID!): [Volunteer],
+    prDeleteVolunteers: [Volunteer]
 
     registerAuthorizeVol(volunteer: VolunteerInput): Credentials
 }

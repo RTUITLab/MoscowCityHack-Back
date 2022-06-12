@@ -53,7 +53,7 @@ public class UserService extends AbstractService<User, UserRepository> implement
         // TODO так себе костыль
         user.setRole(roleRepository.findByName(user.getRole().getName()));
         repository.save(user);
-        return repository.getReferenceById(user.getId());
+        return repository.findById(user.getId()).orElse(null);
     }
 
     public User getByToken(String token) {
