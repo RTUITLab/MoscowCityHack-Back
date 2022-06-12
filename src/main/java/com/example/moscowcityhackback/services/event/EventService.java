@@ -47,28 +47,34 @@ public class EventService extends AbstractService<Event, EventRepository> {
         return repository.findAllByParticipantsContaining(user);
     }
 
-    // TODO супер кринж костыль
+//    // TODO супер кринж костыль
+//    @Override
+//    public Event create(Event event) {
+//        List<Direction> directions = event.getDirections();
+//        List<Direction> updatedDirections = new ArrayList<>();
+////        directions = directions.stream().map(d -> d.setId(directionRepository.findByName(d.getName()).getId())).collect(Collectors.toList());
+//        for(Direction direction: directions) {
+//            direction.setId(directionRepository.findByName(direction.getName()).getId());
+//            updatedDirections.add(direction);
+//        }
+//        event.setDirections(updatedDirections);
+//
+////        event.setOwner(userRepository.findByLogin(event.getOwner().getLogin()));
+//
+//        List<User> users = event.getParticipants();
+//        List<User> updatedUsers = new ArrayList<>();
+////        directions = directions.stream().map(d -> d.setId(directionRepository.findByName(d.getName()).getId())).collect(Collectors.toList());
+//        for(User user: users) {
+//            user.setId(userRepository.findByLogin(user.getLogin()).getId());
+//            updatedUsers.add(user);
+//        }
+//        event.setParticipants(updatedUsers);
+//        return super.create(event);
+//    }
+
+
     @Override
     public Event create(Event event) {
-        List<Direction> directions = event.getDirections();
-        List<Direction> updatedDirections = new ArrayList<>();
-//        directions = directions.stream().map(d -> d.setId(directionRepository.findByName(d.getName()).getId())).collect(Collectors.toList());
-        for(Direction direction: directions) {
-            direction.setId(directionRepository.findByName(direction.getName()).getId());
-            updatedDirections.add(direction);
-        }
-        event.setDirections(updatedDirections);
-
-//        event.setOwner(userRepository.findByLogin(event.getOwner().getLogin()));
-
-        List<User> users = event.getParticipants();
-        List<User> updatedUsers = new ArrayList<>();
-//        directions = directions.stream().map(d -> d.setId(directionRepository.findByName(d.getName()).getId())).collect(Collectors.toList());
-        for(User user: users) {
-            user.setId(userRepository.findByLogin(user.getLogin()).getId());
-            updatedUsers.add(user);
-        }
-        event.setParticipants(updatedUsers);
         return super.create(event);
     }
 }
