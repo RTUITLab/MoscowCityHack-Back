@@ -59,7 +59,7 @@ public class Event extends AbstractEntity {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Direction> directions;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Tag> tags;
     private boolean published;
