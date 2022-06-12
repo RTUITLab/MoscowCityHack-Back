@@ -22,11 +22,11 @@ public class ModeratorService extends AbstractService<Moderator, ModeratorInfoRe
     }
 
     @Override
-    public List<Moderator> create(Moderator moderator) {
+    public Moderator create(Moderator moderator) {
         moderator.getUser().setPassword(passwordEncoder.encode(moderator.getUser().getPassword()));
         // TODO так себе костыль
         moderator.getUser().setRole(roleRepository.findByName(moderator.getUser().getRole().getName()));
         repository.save(moderator);
-        return repository.findAll();
+        return repository.getReferenceById(moderator.getId());
     }
 }

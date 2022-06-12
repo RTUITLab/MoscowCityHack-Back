@@ -52,20 +52,27 @@ input EventInput {
     maxAmount: Int,
     online: Boolean,
     participants: [UserInput],
-    owner: UserInput,
     directions: [DirectionInput],
     tags: [TagInput]
 }
 extend type Query {
     getEvents: [Event],
     getEvent(id: ID!): Event
+
+    prGetEvents: [Event],
+    prGetEvent(id: ID!): Event
 }
 
 extend type Mutation {
-    createEvent(event: EventInput): [Event],
+    createEvent(event: EventInput): Event,
     updateEvent(id: ID!, event: EventInput): Event,
-    deleteEvent(id: ID!): [Event],
-    deleteEvents: [Event]
+    deleteEvent(id: ID!): String,
+    deleteEvents: String
+
+    prCreateEvent(event: EventInput): Event,
+    prUpdateEvent(id: ID!, event: EventInput): Event,
+    prDeleteEvent(id: ID!): [Event],
+    prDeleteEvents: [Event]
 }
 
 

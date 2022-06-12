@@ -14,7 +14,7 @@ public class RoleMutation implements GraphQLMutationResolver {
     @Autowired
     private RoleService roleService;
 
-    public List<Role> createRole(Role role) {
+    public Role createRole(Role role) {
         return roleService.create(role);
     }
 

@@ -22,11 +22,11 @@ public class VolunteerService extends AbstractService<Volunteer, VolunteerInfoRe
     }
 
     @Override
-    public List<Volunteer> create(Volunteer volunteer) {
+    public Volunteer create(Volunteer volunteer) {
         volunteer.getUser().setPassword(passwordEncoder.encode(volunteer.getUser().getPassword()));
         // TODO так себе костыль
         volunteer.getUser().setRole(roleRepository.findByName(volunteer.getUser().getRole().getName()));
         repository.save(volunteer);
-        return repository.findAll();
+        return repository.getReferenceById(volunteer.getId());
     }
 }

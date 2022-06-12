@@ -20,7 +20,7 @@ extend type Query {
 }
 
 extend type Mutation {
-    createVolunteer(volunteer: VolunteerInput): [Volunteer],
+    createVolunteer(volunteer: VolunteerInput): Volunteer,
     updateVolunteer(id: ID!, volunteer: VolunteerInput): Volunteer,
     deleteVolunteer(id: ID!): [Volunteer],
     deleteVolunteers: [Volunteer]

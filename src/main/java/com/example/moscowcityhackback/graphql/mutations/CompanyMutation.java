@@ -14,7 +14,7 @@ public class CompanyMutation implements GraphQLMutationResolver {
     @Autowired
     private CompanyService companyService;
 
-    public List<Company> createCompany(Company company) {
+    public Company createCompany(Company company) {
         return companyService.create(company);
     }
 

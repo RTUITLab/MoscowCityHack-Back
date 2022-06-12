@@ -22,7 +22,7 @@ extend type Query {
 }
 
 extend type Mutation {
-    createModerator(moderator: ModeratorInput): [Moderator],
+    createModerator(moderator: ModeratorInput): Moderator,
     updateModerator(id: ID!, moderator: ModeratorInput): Moderator,
     deleteModerator(id: ID!): [Moderator],
     deleteModerators: [Moderator]
