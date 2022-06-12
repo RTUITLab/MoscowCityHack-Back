@@ -27,7 +27,7 @@ public class Advancement extends AbstractEntity {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<PointsHistory> pointsHistory = new java.util.ArrayList<>();
 
-    // TODO Persist заглушка нужно инициализировать достижения скриптом
+    // TODO Persist заглушка нужно инициализировать ачивки скриптом
     @ManyToMany(cascade = CascadeType.PERSIST)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Achievement> achievements;

@@ -1,8 +1,6 @@
 package com.example.moscowcityhackback.graphql.queries.advancement;
 
-import com.example.moscowcityhackback.entity.advancement.AchievementHistory;
 import com.example.moscowcityhackback.entity.advancement.PointsHistory;
-import com.example.moscowcityhackback.services.advancement.AchievementHistoryService;
 import com.example.moscowcityhackback.services.advancement.PointsHistoryService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -4,8 +4,6 @@ import com.example.moscowcityhackback.entity.advancement.Advancement;
 import com.example.moscowcityhackback.entity.profile.User;
 import com.example.moscowcityhackback.repositories.advancement.AdvancementRepository;
 import com.example.moscowcityhackback.services.AbstractService;
-import com.example.moscowcityhackback.services.utils.TokenParser;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,7 +13,13 @@ public class AdvancementService extends AbstractService<Advancement, Advancement
         super(repository);
     }
 
-    public Advancement getAdvancementsByUser(User user) {
+    public Advancement getAdvancementByUser(User user) {
+        return repository.findByUser(user);
+    }
+
+    public Advancement updateAdvancementByUser(Advancement advancement, User user) {
+        advancement.setId(repository.findByUser(user).getId());
+        repository.save(advancement);
         return repository.findByUser(user);
     }
 }

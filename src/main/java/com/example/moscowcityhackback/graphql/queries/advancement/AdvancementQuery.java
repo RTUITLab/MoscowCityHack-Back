@@ -34,6 +34,6 @@ public class AdvancementQuery implements GraphQLQueryResolver {
 
     @PreAuthorize("isAuthenticated()")
     public Advancement getAdvancementByToken(DataFetchingEnvironment env) {
-        return advancementService.getAdvancementsByUser(tokenParser.getUserFromRequest(env));
+        return advancementService.getAdvancementByUser(tokenParser.getUserFromRequest(env));
     }
 }

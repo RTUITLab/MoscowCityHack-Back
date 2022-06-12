@@ -23,7 +23,7 @@ extend type Query {
 
 extend type Mutation {
     createAdvancement(advancement: AdvancementInput): Advancement,
-    updateAdvancement(id: ID!, advancement: AdvancementInput): Advancement,
+    updateAdvancementByToken(advancement: AdvancementInput): Advancement,
     deleteAdvancement(id: ID!): [Advancement],
     deleteAdvancements: [Advancement]
 }

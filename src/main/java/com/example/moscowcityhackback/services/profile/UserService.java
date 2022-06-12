@@ -51,7 +51,6 @@ public class UserService extends AbstractService<User, UserRepository> implement
     @Override
     public User create(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        // TODO так себе костыль
         user.setRole(roleRepository.findByName(user.getRole().getName()));
         repository.save(user);
         return repository.findById(user.getId()).orElse(null);

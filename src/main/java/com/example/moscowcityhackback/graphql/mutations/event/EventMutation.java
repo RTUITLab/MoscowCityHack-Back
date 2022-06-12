@@ -23,23 +23,6 @@ public class EventMutation implements GraphQLMutationResolver {
         this.usernameParser = usernameParser;
     }
 
-    public Event unprCreateEvent(Event event) {
-        return eventService.create(event);
-    }
-
-    public Event unprUpdateEvent(long id, Event event) {
-        return eventService.update(id, event);
-    }
-
-    public List<Event> unprDeleteEvent(long id) {
-        return eventService.delete(id);
-    }
-
-    public List<Event> unprDeleteEvents() {
-        return eventService.deleteAll();
-    }
-
-
     @Transactional
     public Event createEvent(Event event, DataFetchingEnvironment env) {
         event.setPublished(false);

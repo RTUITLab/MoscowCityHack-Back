@@ -26,6 +26,4 @@ extend type Mutation {
     updateModerator(id: ID!, moderator: ModeratorInput): Moderator,
     deleteModerator(id: ID!): [Moderator],
     deleteModerators: [Moderator]
-
-    registerAuthorizeMod(moderator: ModeratorInput): Credentials
 }
