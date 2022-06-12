@@ -11,10 +11,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.time.Instant;
 import java.util.List;
 
 @Entity
@@ -27,10 +24,9 @@ public class Event extends AbstractEntity {
     private String title;
     private String region;
     private String address;
-    private OffsetDateTime beginTime;
-    private OffsetDateTime endTime;
-
-    @ElementCollection()
+    private Long dateStart;
+    private Long dateEnd;
+    @ElementCollection
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<String> taskDescription;
 
@@ -42,12 +38,18 @@ public class Event extends AbstractEntity {
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<String> facilities;
 
+    @ElementCollection
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<String> materials;
+
     private String photoUrl;
     private String email;
     private Integer currentAmount;
     private Integer maxAmount;
     private boolean online;
+
     @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<User> participants;
     @OneToOne
     private User owner;
@@ -57,5 +59,7 @@ public class Event extends AbstractEntity {
     private List<Direction> directions;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Tag> tags;
+    private boolean published;
 }

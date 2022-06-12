@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,4 +19,6 @@ import javax.persistence.Table;
 @Table(name = "tags")
 public class Tag extends AbstractEntity {
     private String name;
+    @ManyToMany
+    private List<Event> event;
 }
