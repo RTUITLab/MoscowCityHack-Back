@@ -7,7 +7,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,4 +20,6 @@ import javax.persistence.Table;
 @Table(name = "directions")
 public class Direction extends AbstractEntity {
     private String name;
+    @ManyToMany
+    private List<Event> event;
 }

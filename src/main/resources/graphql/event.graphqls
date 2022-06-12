@@ -1,7 +1,7 @@
 scalar DateTime
 
 type Direction {
-    id: ID!,
+    id: ID!
     name: String
 }
 
@@ -10,7 +10,7 @@ input DirectionInput {
 }
 
 type Tag {
-    id: ID!,
+    id: ID!
     name: String
 }
 
@@ -20,41 +20,48 @@ input TagInput {
 
 type Event {
     id: ID!
-    title: String,
-    region: String,
-    beginTime: DateTime,
-    endTime: DateTime,
+    title: String
+    region: String
+    address: String
+    dateStart: Int
+    dateEnd: Int
     taskDescription: [String]
     requirements: [String]
     facilities: [String]
-    photoUrl: String,
+    materials: [String]
+    photoUrl: String
     email: String
-    currentAmount: Int,
-    maxAmount: Int,
-    online: Boolean,
-    participants: [User],
-    owner: User,
-    directions: [Direction],
+    currentAmount: Int
+    maxAmount: Int
+    online: Boolean
+    participants: [User]
+    owner: User
+    directions: [Direction]
     tags: [Tag]
+    published: Boolean
 }
 
 input EventInput {
-    title: String,
-    region: String,
-    beginTime: DateTime,
-    endTime: DateTime,
+    title: String
+    region: String
+    address: String
+    dateStart: Int
+    dateEnd: Int
     taskDescription: [String]
     requirements: [String]
     facilities: [String]
+    materials: [String]
     photoUrl: String,
     email: String
-    currentAmount: Int,
-    maxAmount: Int,
-    online: Boolean,
-    participants: [UserInput],
-    directions: [DirectionInput],
+    currentAmount: Int
+    maxAmount: Int
+    online: Boolean
+    participants: [UserInput]
+    directions: [DirectionInput]
     tags: [TagInput]
+    published: Boolean
 }
+
 extend type Query {
     getEvents: [Event],
     getEvent(id: ID!): Event
@@ -64,14 +71,14 @@ extend type Query {
 }
 
 extend type Mutation {
-    createEvent(event: EventInput): Event,
-    updateEvent(id: ID!, event: EventInput): Event,
-    deleteEvent(id: ID!): String,
+    createEvent(event: EventInput): Event
+    updateEvent(id: ID!, event: EventInput): Event
+    deleteEvent(id: ID!): String
     deleteEvents: String
 
-    prCreateEvent(event: EventInput): Event,
-    prUpdateEvent(id: ID!, event: EventInput): Event,
-    prDeleteEvent(id: ID!): [Event],
+    prCreateEvent(event: EventInput): Event
+    prUpdateEvent(id: ID!, event: EventInput): Event
+    prDeleteEvent(id: ID!): [Event]
     prDeleteEvents: [Event]
 }
 
