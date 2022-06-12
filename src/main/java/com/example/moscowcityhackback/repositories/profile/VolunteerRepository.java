@@ -6,4 +6,5 @@ import com.example.moscowcityhackback.repositories.CommonRepository;
 
 public interface VolunteerRepository extends CommonRepository<Volunteer> {
     Volunteer findByIdAndUser(long id, User user);
+    Volunteer findByUser(User user);
 }
