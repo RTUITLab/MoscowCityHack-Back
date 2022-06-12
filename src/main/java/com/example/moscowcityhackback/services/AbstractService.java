@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
+@Transactional
 public class AbstractService<E extends AbstractEntity, R extends CommonRepository<E>> {
     protected final R repository;
 

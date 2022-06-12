@@ -1,6 +1,7 @@
 package com.example.moscowcityhackback.config;
 
 import graphql.scalars.ExtendedScalars;
+import graphql.scalars.datetime.DateTimeScalar;
 import graphql.schema.GraphQLScalarType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,11 +9,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ScalarConfig {
     @Bean
-    public GraphQLScalarType dateScalar() {
+    public GraphQLScalarType localDateScalar() {
         return ExtendedScalars.Date;
     }
     @Bean
-    public GraphQLScalarType timestampScalar() {
+    public GraphQLScalarType offsetDateTimeScalar() {
         return ExtendedScalars.DateTime;
     }
 }

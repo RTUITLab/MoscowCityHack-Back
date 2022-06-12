@@ -33,7 +33,6 @@ public class EventQuery implements GraphQLQueryResolver {
     }
 
     @PreAuthorize("isAuthenticated()")
-    @Transactional
     public List<Event> prGetEvents(DataFetchingEnvironment env) {
         return eventService.getAllByOwner(usernameParser.getUserFromRequest(env));
     }

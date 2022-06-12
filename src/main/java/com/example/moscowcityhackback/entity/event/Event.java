@@ -6,9 +6,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -21,14 +27,21 @@ public class Event extends AbstractEntity {
     private String title;
     private String region;
     private String address;
-    private Timestamp beginTime;
-    private Timestamp endTime;
-    @ElementCollection
+    private OffsetDateTime beginTime;
+    private OffsetDateTime endTime;
+
+    @ElementCollection()
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<String> taskDescription;
-    @ElementCollection
+
+    @ElementCollection()
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<String> requirements;
+
     @ElementCollection
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<String> facilities;
+
     private String photoUrl;
     private String email;
     private Integer currentAmount;
@@ -38,8 +51,12 @@ public class Event extends AbstractEntity {
     private List<User> participants;
     @OneToOne
     private User owner;
-    @OneToMany
+    // TODO cascadeType заглушка убрать ее перед пушем
+
+    @ManyToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Direction> directions;
-    @OneToMany
+
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Tag> tags;
 }

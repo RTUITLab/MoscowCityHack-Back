@@ -30,4 +30,24 @@ public class ModeratorMutation implements GraphQLMutationResolver {
     public List<Moderator> deleteModerators() {
         return ModeratorService.deleteAll();
     }
+
+    @PreAuthorize("hasRole('MODERATOR')")
+    public Moderator prCreateModerator(Moderator moderator) {
+        return ModeratorService.create(moderator);
+    }
+
+    @PreAuthorize("hasRole('MODERATOR')")
+    public Moderator prUpdateModerator(long id, Moderator moderator) {
+        return ModeratorService.update(id, moderator);
+    }
+
+    @PreAuthorize("hasRole('MODERATOR')")
+    public List<Moderator> prDeleteModerator(long id) {
+        return ModeratorService.delete(id);
+    }
+
+    @PreAuthorize("hasRole('MODERATOR')")
+    public List<Moderator> prDeleteModerators() {
+        return ModeratorService.deleteAll();
+    }
 }
