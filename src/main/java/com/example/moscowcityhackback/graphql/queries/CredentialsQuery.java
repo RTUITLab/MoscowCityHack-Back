@@ -31,21 +31,11 @@ public class CredentialsQuery implements GraphQLQueryResolver {
     }
 
     public Credentials authorize(String login, String password) {
-        Credentials credentials;
-        User user = userService.getByLogin(login);
-        if (user !=null && BCrypt.checkpw(password, user.getPassword())) {
-            Algorithm algorithm = Algorithm.HMAC256(jwtSecret.getBytes());
-            String userRole = user.getRole().getName();
-            String access_token = JWT.create().withSubject(login).withClaim("roles", List.of(userRole)).sign(algorithm);
-            credentials = new Credentials(access_token, userRole);
-        }
-        else
-            credentials = new Credentials("incorrect login or password", "incorrect login or password");
-        return credentials;
+        return userService.authorize(login, password);
     }
 
     @AllArgsConstructor
-    private static class Credentials {
+    public static class Credentials {
         private String token;
         private String role;
     }

@@ -1,6 +1,7 @@
 package com.example.moscowcityhackback.graphql.mutations;
 
 import com.example.moscowcityhackback.entity.profile.Company;
+import com.example.moscowcityhackback.graphql.queries.CredentialsQuery;
 import com.example.moscowcityhackback.services.CompanyService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,9 @@ public class CompanyMutation implements GraphQLMutationResolver {
     @PreAuthorize("hasRole('MODERATOR')")
     public List<Company> deleteCompanies() {
         return companyService.deleteAll();
+    }
+
+    public CredentialsQuery.Credentials registerAuthorizeCom(Company company) {
+        return companyService.createAndAuthorize(company);
     }
 }

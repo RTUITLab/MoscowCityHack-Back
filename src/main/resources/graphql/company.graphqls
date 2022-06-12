@@ -21,4 +21,7 @@ type Mutation {
     updateCompany(id: ID!, company: CompanyInput): Company,
     deleteCompany(id: ID!): [Company],
     deleteCompanies: [Company]
+
+    registerAuthorizeCom
+    (company: CompanyInput): Credentials
 }
