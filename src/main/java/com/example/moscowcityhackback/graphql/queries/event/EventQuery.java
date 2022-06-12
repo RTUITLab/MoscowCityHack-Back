@@ -1,6 +1,8 @@
 package com.example.moscowcityhackback.graphql.queries.event;
 
 import com.example.moscowcityhackback.entity.event.Event;
+import com.example.moscowcityhackback.services.event.EventService;
+import com.example.moscowcityhackback.services.utils.TokenParser;
 import com.example.moscowcityhackback.entity.profile.User;
 import com.example.moscowcityhackback.entity.specification.FilterRequest;
 import com.example.moscowcityhackback.entity.specification.SearchRequest;
@@ -21,10 +23,10 @@ import java.util.Map;
 @Component
 public class EventQuery implements GraphQLQueryResolver {
     private final EventService eventService;
-    private final UsernameFromTokenParser usernameParser;
+    private final TokenParser usernameParser;
 
     @Autowired
-    public EventQuery(EventService eventService, UsernameFromTokenParser usernameParser) {
+    public EventQuery(EventService eventService, TokenParser usernameParser) {
         this.eventService = eventService;
         this.usernameParser = usernameParser;
     }
@@ -44,21 +46,18 @@ public class EventQuery implements GraphQLQueryResolver {
         return eventService.searchEvents(request);
     }
 
+    @PreAuthorize("isAuthenticated()")
     public List<Event> getEvents() {
         return eventService.getAll();
     }
 
-    public Event getEvent(long id) {
-        return eventService.getById(id);
+    @PreAuthorize("isAuthenticated()")
+    public List<Event> getEventsByToken(DataFetchingEnvironment env) {
+        return eventService.getParticipatedEvents(usernameParser.getUserFromRequest(env));
     }
 
     @PreAuthorize("isAuthenticated()")
-    public List<Event> prGetEvents(DataFetchingEnvironment env) {
-        return eventService.getAllByOwner(usernameParser.getUserFromRequest(env));
-    }
-
-    @PreAuthorize("isAuthenticated()")
-    public Event prGetEvent(long id, DataFetchingEnvironment env) {
+    public Event getEventByTokenAndId(long id, DataFetchingEnvironment env) {
         return eventService.getByIdAndOwner(id, usernameParser.getUserFromRequest(env));
     }
 }

@@ -2,8 +2,8 @@ package com.example.moscowcityhackback.graphql.mutations.profile;
 
 import com.example.moscowcityhackback.entity.profile.Volunteer;
 import com.example.moscowcityhackback.graphql.queries.profile.CredentialsQuery;
-import com.example.moscowcityhackback.services.VolunteerService;
-import com.example.moscowcityhackback.services.utils.UsernameFromTokenParser;
+import com.example.moscowcityhackback.services.profile.VolunteerService;
+import com.example.moscowcityhackback.services.utils.TokenParser;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,53 +15,38 @@ import java.util.List;
 
 @Component
 public class VolunteerMutation implements GraphQLMutationResolver {
-    private final UsernameFromTokenParser usernameParser;
+    private final TokenParser usernameParser;
     private final VolunteerService volunteerService;
 
     @Autowired
-    public VolunteerMutation(UsernameFromTokenParser usernameParser, VolunteerService volunteerService) {
+    public VolunteerMutation(TokenParser usernameParser, VolunteerService volunteerService) {
         this.usernameParser = usernameParser;
         this.volunteerService = volunteerService;
     }
 
-    public Volunteer createVolunteer(Volunteer volunteer) {
-        return volunteerService.create(volunteer);
-    }
-
-    public Volunteer updateVolunteer(long id, Volunteer volunteer) {
-        return volunteerService.update(id, volunteer);
-    }
-
-    public List<Volunteer> deleteVolunteer(long id) {
-        return volunteerService.delete(id);
-    }
-
-    public List<Volunteer> deleteVolunteers() {
-        return volunteerService.deleteAll();
-    }
-
+    @PreAuthorize("isAnonymous()")
     public CredentialsQuery.Credentials registerAuthorizeVol(Volunteer volunteer) {
         return volunteerService.createAndAuthorize(volunteer);
     }
 
-    @PreAuthorize("isAnonymous()")
-    public Volunteer prCreateVolunteer(Volunteer volunteer) {
+    @PreAuthorize("hasAnyRole('MODERATOR')")
+    public Volunteer createVolunteer(Volunteer volunteer) {
         return volunteerService.create(volunteer);
     }
 
     @PreAuthorize("hasRole('VOLUNTEER')")
     @Transactional
-    public Volunteer prUpdateVolunteer(long id, Volunteer volunteer, DataFetchingEnvironment env) throws Exception {
+    public Volunteer updateVolunteer(long id, Volunteer volunteer, DataFetchingEnvironment env) throws Exception {
         return volunteerService.updateByIdAndUser(id, volunteer, usernameParser.getUserFromRequest(env));
     }
 
     @PreAuthorize("hasRole('MODERATOR')")
-    public List<Volunteer> prDeleteVolunteer(long id) {
+    public List<Volunteer> deleteVolunteer(long id) {
         return volunteerService.delete(id);
     }
 
     @PreAuthorize("hasRole('MODERATOR')")
-    public List<Volunteer> prDeleteVolunteers() {
+    public List<Volunteer> deleteVolunteers() {
         return volunteerService.deleteAll();
     }
 }

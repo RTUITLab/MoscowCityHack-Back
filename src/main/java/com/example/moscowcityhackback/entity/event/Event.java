@@ -48,17 +48,18 @@ public class Event extends AbstractEntity {
     private Integer maxAmount;
     private boolean online;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<User> participants;
+
     @OneToOne
     private User owner;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Direction> directions;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Tag> tags;
     private boolean published;

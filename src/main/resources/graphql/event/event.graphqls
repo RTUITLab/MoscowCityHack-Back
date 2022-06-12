@@ -83,6 +83,8 @@ input SearchRequest {
 
 extend type Query {
     getEvents: [Event],
+    getEventsByToken: [Event]
+    getEventByTokenAndId(id: ID!): Event
     getEvent(id: ID!): Event
     searchEvents(search: SearchRequest): [Event]
 
@@ -91,6 +93,7 @@ extend type Query {
 }
 
 extend type Mutation {
+    createEventWithToken(event: EventInput): Event
     createEvent(event: EventInput): Event
     updateEvent(id: ID!, event: EventInput): Event
     deleteEvent(id: ID!): String

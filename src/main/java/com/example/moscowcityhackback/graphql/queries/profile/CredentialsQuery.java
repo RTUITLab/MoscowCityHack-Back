@@ -1,37 +1,42 @@
 package com.example.moscowcityhackback.graphql.queries.profile;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.example.moscowcityhackback.entity.profile.User;
-import com.example.moscowcityhackback.services.CompanyService;
-import com.example.moscowcityhackback.services.RoleService;
-import com.example.moscowcityhackback.services.UserService;
-import com.example.moscowcityhackback.services.VolunteerService;
+import com.example.moscowcityhackback.entity.profile.Company;
+import com.example.moscowcityhackback.entity.profile.Volunteer;
+import com.example.moscowcityhackback.services.profile.CompanyService;
+import com.example.moscowcityhackback.services.profile.UserService;
+import com.example.moscowcityhackback.services.profile.VolunteerService;
+import com.example.moscowcityhackback.services.utils.TokenParser;
 import graphql.kickstart.tools.GraphQLQueryResolver;
+import graphql.schema.DataFetchingEnvironment;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class CredentialsQuery implements GraphQLQueryResolver {
-    private UserService userService;
-//    private CompanyService companyService;
-//    private VolunteerService volunteerService;
-    private RoleService roleService;
-    @Value("${jwt.secret}")
-    private String jwtSecret;
+    private final UserService userService;
+    private final TokenParser tokenParser;
+    private final CompanyService companyService;
+    private final VolunteerService volunteerService;
 
     @Autowired
-    public CredentialsQuery(UserService userService, CompanyService companyService, VolunteerService volunteerService) {
+    public CredentialsQuery(UserService userService, CompanyService companyService, VolunteerService volunteerService, TokenParser tokenParser) {
         this.userService = userService;
+        this.tokenParser = tokenParser;
+        this.companyService = companyService;
+        this.volunteerService = volunteerService;
     }
 
     public Credentials authorize(String login, String password) {
         return userService.authorize(login, password);
+    }
+
+    public Volunteer getVolunteerByToken(DataFetchingEnvironment env) {
+        return volunteerService.findVolunteerByUser(tokenParser.getUserFromRequest(env));
+    }
+
+    public Company getCompanyByToken(DataFetchingEnvironment env) {
+        return companyService.findCompanyByUser(tokenParser.getUserFromRequest(env));
     }
 
     @AllArgsConstructor

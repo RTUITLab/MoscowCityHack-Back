@@ -1,10 +1,11 @@
-package com.example.moscowcityhackback.services;
+package com.example.moscowcityhackback.services.profile;
 
 import com.example.moscowcityhackback.entity.profile.User;
 import com.example.moscowcityhackback.entity.profile.Volunteer;
 import com.example.moscowcityhackback.graphql.queries.profile.CredentialsQuery;
 import com.example.moscowcityhackback.repositories.profile.RoleRepository;
 import com.example.moscowcityhackback.repositories.profile.VolunteerRepository;
+import com.example.moscowcityhackback.services.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -48,5 +49,9 @@ public class VolunteerService extends AbstractService<Volunteer, VolunteerReposi
         else
             throw new Exception("Cant find volunteer with given id and username");
 
+    }
+
+    public Volunteer findVolunteerByUser(User user) {
+        return repository.findByUser(user);
     }
 }

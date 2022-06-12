@@ -12,4 +12,5 @@ public interface EventRepository extends CommonRepository<Event> {
     void deleteByIdAndOwner(long id, User owner);
     void deleteAllByOwner(User owner);
     List<Event> findAllByOwner(User owner);
+    List<Event> findAllByParticipantsContaining(User user);
 }

@@ -19,9 +19,6 @@ input ModeratorInput {
 extend type Query {
     getModerators: [Moderator],
     getModerator(id: ID!): Moderator
-
-    prGetModerators: [Moderator],
-    prGetModerator(id: ID!): Moderator
 }
 
 extend type Mutation {
@@ -29,11 +26,4 @@ extend type Mutation {
     updateModerator(id: ID!, moderator: ModeratorInput): Moderator,
     deleteModerator(id: ID!): [Moderator],
     deleteModerators: [Moderator]
-
-    prCreateModerator(moderator: ModeratorInput): Moderator,
-    prUpdateModerator(id: ID!, moderator: ModeratorInput): Moderator,
-    prDeleteModerator(id: ID!): [Moderator],
-    prDeleteModerators: [Moderator]
-
-    registerAuthorizeMod(moderator: ModeratorInput): Credentials
 }
