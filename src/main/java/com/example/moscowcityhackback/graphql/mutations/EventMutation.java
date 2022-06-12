@@ -41,9 +41,9 @@ public class EventMutation implements GraphQLMutationResolver {
     }
 
 
-    @PreAuthorize("isAuthenticated()")
     @Transactional
     public Event prCreateEvent(Event event, DataFetchingEnvironment env) {
+        event.setPublished(false);
         event.setOwner(usernameParser.getUserFromRequest(env));
         eventService.create(event);
         return event;

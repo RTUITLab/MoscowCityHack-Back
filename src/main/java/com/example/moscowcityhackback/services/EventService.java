@@ -31,4 +31,5 @@ public class EventService extends AbstractService<Event, EventRepository> {
         repository.deleteAllByOwner(owner);
         return repository.findAllByOwner(owner);
     }
+
 }
