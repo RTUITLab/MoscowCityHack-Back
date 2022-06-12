@@ -11,7 +11,7 @@ import java.util.List;
 
 @Component
 @PreAuthorize("hasAnyRole('MODERATOR', 'COMPANY')")
-public class ModeratorInfoMutation implements GraphQLMutationResolver {
+public class ModeratorMutation implements GraphQLMutationResolver {
     @Autowired
     private ModeratorService ModeratorService;
 
