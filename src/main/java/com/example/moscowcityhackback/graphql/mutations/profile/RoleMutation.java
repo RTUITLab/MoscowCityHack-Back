@@ -15,22 +15,22 @@ public class RoleMutation implements GraphQLMutationResolver {
     @Autowired
     private RoleService roleService;
 
-    @PreAuthorize("hasAnyRole('MODERATOR')")
+//    @PreAuthorize("hasAnyRole('MODERATOR')")
     public Role createRole(Role role) {
         return roleService.create(role);
     }
 
-    @PreAuthorize("hasAnyRole('MODERATOR')")
+//    @PreAuthorize("hasAnyRole('MODERATOR')")
     public Role updateRole(long id, Role role) {
         return roleService.update(id, role);
     }
 
-    @PreAuthorize("hasAnyRole('MODERATOR')")
+//    @PreAuthorize("hasAnyRole('MODERATOR')")
     public List<Role> deleteRole(long id) {
         return roleService.delete(id);
     }
 
-    @PreAuthorize("hasAnyRole('MODERATOR')")
+//    @PreAuthorize("hasAnyRole('MODERATOR')")
     public List<Role> deleteRoles() {
         return roleService.deleteAll();
     }

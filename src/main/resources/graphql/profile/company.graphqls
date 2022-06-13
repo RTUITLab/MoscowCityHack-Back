@@ -14,12 +14,13 @@ input CompanyInput {
 type Query {
     getCompanies: [Company],
     getCompany(id: ID!): Company
+    getCompanyByUserId(userId: ID!): Company
 }
 
 type Mutation {
     createCompany(company: CompanyInput): Company,
     updateCompany(id: ID!, company: CompanyInput): Company,
-    deleteCompany(id: ID!): [Company],
+    deleteCompany(d: ID!): [Company],
     deleteCompanies: [Company]
 
     registerAuthorizeCom(company: CompanyInput): Credentials
