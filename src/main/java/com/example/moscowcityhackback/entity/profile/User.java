@@ -20,8 +20,8 @@ public class User extends AbstractEntity {
     @ManyToOne
     private Role role;
 
-    @OneToOne
-    private Cart cart = new Cart();
+    @OneToOne(cascade = CascadeType.ALL)
+    private Cart cart;
 
     public User(Long id, String login, String password, Role role) {
         super(id);
