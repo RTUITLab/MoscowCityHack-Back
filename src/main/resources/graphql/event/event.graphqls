@@ -69,11 +69,16 @@ input FilterRequest {
     value: String
 }
 
+input SortRequest {
+    key: String
+    direction: String
+}
+
 extend type Query {
     getEvents: [Event],
     getEventsByToken: [Event]
     getEventByTokenAndId(id: ID!): Event
-    searchEvents(search: [FilterRequest]): [Event]
+    searchEvents(filter: [FilterRequest], sorts: [SortRequest], page: Int, size: Int): [Event]
 }
 
 extend type Mutation {

@@ -1,12 +1,9 @@
 package com.example.moscowcityhackback.graphql.queries.event;
 
 import com.example.moscowcityhackback.entity.event.Event;
-import com.example.moscowcityhackback.entity.specification.FieldType;
-import com.example.moscowcityhackback.entity.specification.Operator;
+import com.example.moscowcityhackback.entity.specification.*;
 import com.example.moscowcityhackback.services.event.EventService;
 import com.example.moscowcityhackback.services.utils.TokenParser;
-import com.example.moscowcityhackback.entity.specification.FilterRequest;
-import com.example.moscowcityhackback.entity.specification.SearchRequest;
 import com.example.moscowcityhackback.graphql.filter.EventFilter;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import graphql.schema.DataFetchingEnvironment;
@@ -30,17 +27,14 @@ public class EventQuery implements GraphQLQueryResolver {
         this.usernameParser = usernameParser;
     }
 
-    public List<Event> searchEvents(List<EventFilter> eventFilters, DataFetchingEnvironment env) {
-        Map<String, Object> arguments = env.getArguments();
-        List<Map<String, String>> search = (List<Map<String, String>>) arguments.get("search");
-        List<FilterRequest> filters = search.stream().map(map -> FilterRequest.builder()
-                .key(map.get("key"))
-                .operator(Operator.valueOf(map.get("operator")))
-                .fieldType(FieldType.valueOf(map.get("fieldType")))
-                .value(map.get("value"))
-                .build())
-                .collect(Collectors.toList());
-        SearchRequest request = SearchRequest.builder().filters(filters).build();
+    public List<Event> searchEvents(List<FilterRequest> filters, List<SortRequest> sorts,
+                                    Integer page, Integer size) {
+        SearchRequest request = SearchRequest.builder()
+                .filters(filters)
+                .sorts(sorts)
+                .page(page)
+                .size(size)
+                .build();
         return eventService.searchEvents(request);
     }
 
