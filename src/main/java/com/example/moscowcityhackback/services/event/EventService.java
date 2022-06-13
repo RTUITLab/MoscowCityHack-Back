@@ -1,10 +1,9 @@
 package com.example.moscowcityhackback.services.event;
 
-import com.example.moscowcityhackback.entity.event.Direction;
 import com.example.moscowcityhackback.entity.event.Event;
 import com.example.moscowcityhackback.entity.profile.User;
-import com.example.moscowcityhackback.entity.specification.SearchRequest;
-import com.example.moscowcityhackback.entity.specification.SearchSpecification;
+import com.example.moscowcityhackback.repositories.searching.SearchRequest;
+import com.example.moscowcityhackback.repositories.searching.SearchSpecification;
 import com.example.moscowcityhackback.repositories.event.DirectionRepository;
 import com.example.moscowcityhackback.repositories.event.EventRepository;
 import com.example.moscowcityhackback.repositories.profile.UserRepository;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
