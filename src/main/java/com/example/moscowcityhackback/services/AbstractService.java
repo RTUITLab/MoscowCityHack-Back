@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Transactional

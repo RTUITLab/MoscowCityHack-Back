@@ -31,7 +31,7 @@ public class EventMutation implements GraphQLMutationResolver {
     }
 
     @Transactional
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public Event createEventWithToken(Event event, DataFetchingEnvironment env) {
         event.setPublished(false);
         event.setOwner(usernameParser.getUserFromRequest(env));
@@ -39,7 +39,7 @@ public class EventMutation implements GraphQLMutationResolver {
         return event;
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @Transactional
     public Event updateEvent(long id, Event event, DataFetchingEnvironment env) {
         event.setOwner(usernameParser.getUserFromRequest(env));
@@ -47,14 +47,14 @@ public class EventMutation implements GraphQLMutationResolver {
     }
 
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @Transactional
     public List<Event> deleteEvent(long id, DataFetchingEnvironment env) {
         return eventService.deleteByIdAndOwner(id, usernameParser.getUserFromRequest(env));
     }
 
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @Transactional
     public List<Event> deleteEvents(DataFetchingEnvironment env) {
         return eventService.deleteAll();

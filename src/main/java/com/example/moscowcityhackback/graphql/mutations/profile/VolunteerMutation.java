@@ -24,7 +24,7 @@ public class VolunteerMutation implements GraphQLMutationResolver {
         this.volunteerService = volunteerService;
     }
 
-    @PreAuthorize("isAnonymous()")
+//    @PreAuthorize("isAnonymous()")
     public CredentialsQuery.Credentials registerAuthorizeVol(Volunteer volunteer) {
         return volunteerService.createAndAuthorize(volunteer);
     }
