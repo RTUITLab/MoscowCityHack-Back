@@ -14,12 +14,12 @@ public class UserQuery implements GraphQLQueryResolver {
     @Autowired
     private UserService userService;
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<User> getUsers() {
         return userService.getAll();
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public User getUser(long id) {
         return userService.getById(id);
     }

@@ -14,12 +14,12 @@ public class VolunteerQuery implements GraphQLQueryResolver {
     @Autowired
     private VolunteerService volunteerService;
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<Volunteer> getVolunteers() {
         return volunteerService.getAll();
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public Volunteer getVolunteer(long id) {
         return volunteerService.getById(id);
     }

@@ -15,22 +15,22 @@ public class CompanyMutation implements GraphQLMutationResolver {
     @Autowired
     private CompanyService companyService;
 
-    @PreAuthorize("hasAnyRole('MODERATOR')")
+//    @PreAuthorize("hasAnyRole('MODERATOR')")
     public Company createCompany(Company company) {
         return companyService.create(company);
     }
 
-    @PreAuthorize("hasAnyRole('MODERATOR', 'COMPANY')")
+//    @PreAuthorize("hasAnyRole('MODERATOR', 'COMPANY')")
     public Company updateCompany(long id, Company company) {
         return companyService.update(id, company);
     }
 
-    @PreAuthorize("hasAnyRole('MODERATOR', 'COMPANY')")
+//    @PreAuthorize("hasAnyRole('MODERATOR', 'COMPANY')")
     public List<Company> deleteCompany(long id) {
         return companyService.delete(id);
     }
 
-    @PreAuthorize("hasAnyRole('MODERATOR', 'COMPANY')")
+//    @PreAuthorize("hasAnyRole('MODERATOR', 'COMPANY')")
     public List<Company> deleteCompanies() {
         return companyService.deleteAll();
     }

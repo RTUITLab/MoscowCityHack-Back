@@ -44,4 +44,8 @@ public class CompanyService extends AbstractService<Company, CompanyRepository> 
     public Company findCompanyByUser(User user) {
         return repository.findByUser(user);
     }
+
+    public Company getCompanyByUserId(long userId) {
+        return repository.findByUser(userService.getById(userId));
+    }
 }

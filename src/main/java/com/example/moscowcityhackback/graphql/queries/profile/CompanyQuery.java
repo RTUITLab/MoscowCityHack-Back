@@ -20,13 +20,18 @@ public class CompanyQuery implements GraphQLQueryResolver {
         this.companyService = companyService;
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<Company> getCompanies() {
         return companyService.getAll();
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public Company getCompany(long id) {
         return companyService.getById(id);
+    }
+
+//    @PreAuthorize("isAuthenticated()")
+    public Company getCompanyByUserId(long userId) {
+        return companyService.getCompanyByUserId(userId);
     }
 }

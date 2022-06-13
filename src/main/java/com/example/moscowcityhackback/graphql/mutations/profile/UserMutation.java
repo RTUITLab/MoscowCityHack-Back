@@ -14,22 +14,22 @@ public class UserMutation implements GraphQLMutationResolver {
     @Autowired
     private UserService userService;
 
-    @PreAuthorize("hasAnyRole('MODERATOR')")
+    // @PreAuthorize("hasAnyRole('MODERATOR')")
     public User createUser(User user) {
         return userService.create(user);
     }
 
-    @PreAuthorize("hasAnyRole('MODERATOR')")
+    // @PreAuthorize("hasAnyRole('MODERATOR')")
     public User updateUser(long id, User user) {
         return userService.update(id, user);
     }
 
-    @PreAuthorize("hasAnyRole('MODERATOR')")
+    // @PreAuthorize("hasAnyRole('MODERATOR')")
     public List<User> deleteUser(long id) {
         return userService.delete(id);
     }
 
-    @PreAuthorize("hasAnyRole('MODERATOR')")
+    // @PreAuthorize("hasAnyRole('MODERATOR')")
     public List<User> deleteUsers() {
         return userService.deleteAll();
     }

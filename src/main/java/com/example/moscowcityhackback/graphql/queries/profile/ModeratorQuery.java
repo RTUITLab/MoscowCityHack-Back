@@ -14,12 +14,12 @@ public class ModeratorQuery implements GraphQLQueryResolver {
     @Autowired
     private ModeratorService moderatorService;
 
-    @PreAuthorize("hasRole('MODERATOR')")
+//    @PreAuthorize("hasRole('MODERATOR')")
     public List<Moderator> getModerators() {
         return moderatorService.getAll();
     }
 
-    @PreAuthorize("hasRole('MODERATOR')")
+//    @PreAuthorize("hasRole('MODERATOR')")
     public Moderator getModerator(long id) {
         return moderatorService.getById(id);
     }

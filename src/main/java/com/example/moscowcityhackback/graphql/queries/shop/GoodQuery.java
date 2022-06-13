@@ -18,12 +18,12 @@ public class GoodQuery implements GraphQLQueryResolver {
         this.goodService = goodService;
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public Good getGood(long id) {
         return goodService.getById(id);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<Good> getGoods() {
         return goodService.getAll();
     }

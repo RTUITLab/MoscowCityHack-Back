@@ -24,28 +24,28 @@ public class VolunteerMutation implements GraphQLMutationResolver {
         this.volunteerService = volunteerService;
     }
 
-    @PreAuthorize("isAnonymous()")
+//    @PreAuthorize("isAnonymous()")
     public CredentialsQuery.Credentials registerAuthorizeVol(Volunteer volunteer) {
         return volunteerService.createAndAuthorize(volunteer);
     }
 
-    @PreAuthorize("hasAnyRole('MODERATOR')")
+    // @PreAuthorize("hasAnyRole('MODERATOR')")
     public Volunteer createVolunteer(Volunteer volunteer) {
         return volunteerService.create(volunteer);
     }
 
-    @PreAuthorize("hasRole('VOLUNTEER')")
+//    @PreAuthorize("hasRole('VOLUNTEER')")
     @Transactional
     public Volunteer updateVolunteer(long id, Volunteer volunteer, DataFetchingEnvironment env) throws Exception {
         return volunteerService.updateByIdAndUser(id, volunteer, usernameParser.getUserFromRequest(env));
     }
 
-    @PreAuthorize("hasRole('MODERATOR')")
+//    @PreAuthorize("hasRole('MODERATOR')")
     public List<Volunteer> deleteVolunteer(long id) {
         return volunteerService.delete(id);
     }
 
-    @PreAuthorize("hasRole('MODERATOR')")
+//    @PreAuthorize("hasRole('MODERATOR')")
     public List<Volunteer> deleteVolunteers() {
         return volunteerService.deleteAll();
     }

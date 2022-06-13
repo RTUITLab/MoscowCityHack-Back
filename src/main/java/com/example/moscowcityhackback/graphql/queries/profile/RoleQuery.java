@@ -14,12 +14,12 @@ public class RoleQuery implements GraphQLQueryResolver {
     @Autowired
     private RoleService roleService;
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<Role> getRoles() {
         return roleService.getAll();
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public Role getRole(long id) {
         return roleService.getById(id);
     }
