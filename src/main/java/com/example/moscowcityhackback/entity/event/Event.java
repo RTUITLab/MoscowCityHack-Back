@@ -48,7 +48,6 @@ public class Event extends AbstractEntity {
     private Integer maxAmount;
     private boolean online;
 
-    // TODO заглушка ALL надо убрать
     @ManyToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<User> participants;
