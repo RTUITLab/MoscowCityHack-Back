@@ -38,17 +38,17 @@ public class EventQuery implements GraphQLQueryResolver {
         return eventService.searchEvents(request);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<Event> getEvents() {
         return eventService.getAll();
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<Event> getEventsByToken(DataFetchingEnvironment env) {
         return eventService.getParticipatedEvents(usernameParser.getUserFromRequest(env));
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public Event getEventByTokenAndId(long id, DataFetchingEnvironment env) {
         return eventService.getByIdAndOwner(id, usernameParser.getUserFromRequest(env));
     }

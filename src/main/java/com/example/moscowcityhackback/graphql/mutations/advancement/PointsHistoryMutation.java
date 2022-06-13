@@ -14,22 +14,22 @@ public class PointsHistoryMutation implements GraphQLMutationResolver {
     @Autowired
     private PointsHistoryService pointsHistoryService;
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public PointsHistory createPointsHistory(PointsHistory pointsHistory) {
         return pointsHistoryService.create(pointsHistory);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public PointsHistory updatePointsHistory(long id, PointsHistory pointsHistory) {
         return pointsHistoryService.update(id, pointsHistory);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<PointsHistory> deletePointsHistory(long id) {
         return pointsHistoryService.delete(id);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<PointsHistory> deletePointsHistories() {
         return pointsHistoryService.deleteAll();
     }

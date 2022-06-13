@@ -15,12 +15,12 @@ public class AchievementQuery implements GraphQLQueryResolver {
     @Autowired
     private AchievementService achievementService;
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<Achievement> getAchievements() {
         return achievementService.getAll();
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public Achievement getAchievement(long id) {
         return achievementService.getById(id);
     }

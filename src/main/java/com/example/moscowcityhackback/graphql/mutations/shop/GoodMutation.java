@@ -18,22 +18,22 @@ public class GoodMutation implements GraphQLMutationResolver {
         this.goodService = goodService;
     }
 
-    @PreAuthorize("hasAnyRole('MODERATOR')")
+//    @PreAuthorize("hasAnyRole('MODERATOR')")
     public Good createGood(Good good) {
         return goodService.create(good);
     }
 
-    @PreAuthorize("hasAnyRole('MODERATOR')")
+//    @PreAuthorize("hasAnyRole('MODERATOR')")
     public Good updateGood(long id, Good good) {
         return goodService.update(id, good);
     }
 
-    @PreAuthorize("hasAnyRole('MODERATOR')")
+//    @PreAuthorize("hasAnyRole('MODERATOR')")
     public List<Good> deleteGood(long id) {
         return goodService.delete(id);
     }
 
-    @PreAuthorize("hasAnyRole('MODERATOR')")
+//    @PreAuthorize("hasAnyRole('MODERATOR')")
     public List<Good> deleteGoods() {
         return goodService.deleteAll();
     }
