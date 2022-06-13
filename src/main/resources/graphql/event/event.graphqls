@@ -78,6 +78,7 @@ extend type Query {
     getEvents: [Event],
     getEventsByToken: [Event]
     getEventByTokenAndId(id: ID!): Event
+    getEvent(id: ID): Event
     searchEvents(filter: [FilterRequest], sorts: [SortRequest], page: Int, size: Int): [Event]
 }
 

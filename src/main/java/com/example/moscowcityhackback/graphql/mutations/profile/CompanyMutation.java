@@ -35,7 +35,7 @@ public class CompanyMutation implements GraphQLMutationResolver {
         return companyService.deleteAll();
     }
 
-    @PreAuthorize("isAnonymous()")
+//    @PreAuthorize("isAnonymous()")
     public CredentialsQuery.Credentials registerAuthorizeCom(Company company) {
         return companyService.createAndAuthorize(company);
     }

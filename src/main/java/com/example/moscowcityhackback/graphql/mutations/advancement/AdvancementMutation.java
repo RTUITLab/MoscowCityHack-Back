@@ -23,23 +23,23 @@ public class AdvancementMutation implements GraphQLMutationResolver {
         this.tokenParser = tokenParser;
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public Advancement createAdvancement(Advancement advancement) {
         return advancementService.create(advancement);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @Transactional
     public Advancement updateAdvancementByToken(Advancement advancement, DataFetchingEnvironment env) {
         return advancementService.updateAdvancementByUser(advancement, tokenParser.getUserFromRequest(env));
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<Advancement> deleteAdvancement(long id) {
         return advancementService.delete(id);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<Advancement> deleteAdvancements() {
         return advancementService.deleteAll();
     }

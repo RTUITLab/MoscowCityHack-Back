@@ -22,17 +22,17 @@ public class AdvancementQuery implements GraphQLQueryResolver {
         this.tokenParser = tokenParser;
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<Advancement> getAdvancements() {
         return advancementService.getAll();
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public Advancement getAdvancement(long id) {
         return advancementService.getById(id);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public Advancement getAdvancementByToken(DataFetchingEnvironment env) {
         return advancementService.getAdvancementByUser(tokenParser.getUserFromRequest(env));
     }

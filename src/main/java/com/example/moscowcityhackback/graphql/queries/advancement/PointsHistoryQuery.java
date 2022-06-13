@@ -15,12 +15,12 @@ public class PointsHistoryQuery implements GraphQLQueryResolver {
     @Autowired
     private PointsHistoryService pointsHistoryService;
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<PointsHistory> getPointsHistories() {
         return pointsHistoryService.getAll();
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public PointsHistory getPointsHistory(long id) {
         return pointsHistoryService.getById(id);
     }

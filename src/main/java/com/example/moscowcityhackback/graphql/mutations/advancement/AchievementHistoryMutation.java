@@ -14,22 +14,22 @@ public class AchievementHistoryMutation implements GraphQLMutationResolver {
     @Autowired
     private AchievementHistoryService achievementHistoryService;
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public AchievementHistory createAchievementHistory(AchievementHistory achievementHistory) {
         return achievementHistoryService.create(achievementHistory);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public AchievementHistory updateAchievementHistory(long id, AchievementHistory achievementHistory) {
         return achievementHistoryService.update(id, achievementHistory);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<AchievementHistory> deleteAchievementHistory(long id) {
         return achievementHistoryService.delete(id);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     public List<AchievementHistory> deleteAchievementHistories() {
         return achievementHistoryService.deleteAll();
     }

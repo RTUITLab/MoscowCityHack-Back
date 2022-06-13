@@ -54,4 +54,8 @@ public class VolunteerService extends AbstractService<Volunteer, VolunteerReposi
     public Volunteer findVolunteerByUser(User user) {
         return repository.findByUser(user);
     }
+
+    public Volunteer getVolunteerByUserId(long userId) {
+        return repository.findByUser(userService.getById(userId));
+    }
 }
