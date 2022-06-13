@@ -17,6 +17,7 @@ input VolunteerInput {
 extend type Query {
     getVolunteers: [Volunteer],
     getVolunteer(id: ID!): Volunteer,
+    getVolunteerByUserId(userId: Int): Volunteer
 }
 
 extend type Mutation {

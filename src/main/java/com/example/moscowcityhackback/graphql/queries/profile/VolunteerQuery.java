@@ -23,4 +23,8 @@ public class VolunteerQuery implements GraphQLQueryResolver {
     public Volunteer getVolunteer(long id) {
         return volunteerService.getById(id);
     }
+
+    public Volunteer getVolunteerByUserId(long userId) {
+        return volunteerService.getVolunteerByUserId(userId);
+    }
 }

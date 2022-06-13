@@ -1,5 +1,6 @@
 package com.example.moscowcityhackback.services.profile;
 
+import com.example.moscowcityhackback.entity.profile.Company;
 import com.example.moscowcityhackback.entity.profile.User;
 import com.example.moscowcityhackback.entity.profile.Volunteer;
 import com.example.moscowcityhackback.graphql.queries.profile.CredentialsQuery;
@@ -53,5 +54,9 @@ public class VolunteerService extends AbstractService<Volunteer, VolunteerReposi
 
     public Volunteer findVolunteerByUser(User user) {
         return repository.findByUser(user);
+    }
+
+    public Volunteer getVolunteerByUserId(long userId) {
+        return repository.findByUser(userService.getById(userId));
     }
 }
