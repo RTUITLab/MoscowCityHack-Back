@@ -48,4 +48,8 @@ public class EventQuery implements GraphQLQueryResolver {
     public Event getEventByTokenAndId(long id, DataFetchingEnvironment env) {
         return eventService.getByIdAndOwner(id, usernameParser.getUserFromRequest(env));
     }
+
+    public Event getEvent(long id) {
+        return eventService.getById(id);
+    }
 }
