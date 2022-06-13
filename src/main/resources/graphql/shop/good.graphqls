@@ -1,0 +1,28 @@
+type Good {
+    id: ID!
+    name: String
+    desc: String
+    price: Int
+    imgSrc: String
+    favoriteUsers: [User]
+}
+
+input GoodInput {
+    name: String
+    desc: String
+    price: Int
+    imgSrc: String
+    favoriteUsers: [UserInput]
+}
+
+extend type Query {
+    getGood(id: ID): Good
+    getGoods: [Good]
+}
+
+extend type Mutation {
+    createGood(good: GoodInput): Good
+    updateGood(id: ID, good: GoodInput): Good
+    deleteGood(id: ID): [Good]
+    deleteGoods: [Good]
+}

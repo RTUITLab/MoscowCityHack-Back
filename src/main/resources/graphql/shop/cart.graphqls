@@ -1,0 +1,18 @@
+type Cart {
+    id: ID!
+    goods: [Good]
+    user: User
+}
+
+input CartInput {
+    goods: [GoodInput]
+    user: UserInput
+}
+
+extend type Query {
+    getCartByToken: Cart
+}
+
+extend type Mutation {
+    updateCartByToken(cart: CartInput): Cart
+}

@@ -69,40 +69,19 @@ input FilterRequest {
     value: String
 }
 
-#input SortRequest {
-#    key: String
-#    direction: String
-#}
-#
-#input SearchRequest {
-#    filters: FilterRequest
-#    sorts: SortRequest
-#    page: Int
-#    size: Int
-#}
-
 extend type Query {
     getEvents: [Event],
     getEventsByToken: [Event]
     getEventByTokenAndId(id: ID!): Event
-    getEvent(id: ID!): Event
     searchEvents(search: FilterRequest): [Event]
-
-    prGetEvents: [Event],
-    prGetEvent(id: ID!): Event
 }
 
 extend type Mutation {
     createEventWithToken(event: EventInput): Event
     createEvent(event: EventInput): Event
     updateEvent(id: ID!, event: EventInput): Event
-    deleteEvent(id: ID!): String
-    deleteEvents: String
-
-    prCreateEvent(event: EventInput): Event
-    prUpdateEvent(id: ID!, event: EventInput): Event
-    prDeleteEvent(id: ID!): [Event]
-    prDeleteEvents: [Event]
+    deleteEvent(id: ID!): [Event]
+    deleteEvents: [Event]
 }
 
 

@@ -3,11 +3,14 @@ package com.example.moscowcityhackback.services.event;
 import com.example.moscowcityhackback.entity.event.Direction;
 import com.example.moscowcityhackback.entity.event.Event;
 import com.example.moscowcityhackback.entity.profile.User;
+import com.example.moscowcityhackback.entity.specification.SearchRequest;
+import com.example.moscowcityhackback.entity.specification.SearchSpecification;
 import com.example.moscowcityhackback.repositories.event.DirectionRepository;
 import com.example.moscowcityhackback.repositories.event.EventRepository;
 import com.example.moscowcityhackback.repositories.profile.UserRepository;
 import com.example.moscowcityhackback.services.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -41,6 +44,12 @@ public class EventService extends AbstractService<Event, EventRepository> {
     public List<Event> deleteAllByOwner(User owner) {
         repository.deleteAllByOwner(owner);
         return repository.findAllByOwner(owner);
+    }
+
+    public List<Event> searchEvents(SearchRequest request){
+        SearchSpecification<Event> specification = new SearchSpecification<>(request);
+        Pageable pageable = SearchSpecification.getPageable(request.getPage(), request.getSize());
+        return repository.findAll(specification, pageable).getContent();
     }
 
     public List<Event> getParticipatedEvents(User user) {
