@@ -8,6 +8,8 @@ import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
+
 @Component
 public class CartMutation implements GraphQLMutationResolver {
     private final CartService cartService;
@@ -19,6 +21,7 @@ public class CartMutation implements GraphQLMutationResolver {
         this.tokenParser = tokenParser;
     }
 
+    @Transactional
     public Cart updateCartByToken(Cart cart, DataFetchingEnvironment env) {
         return cartService.updateCartByUser(tokenParser.getUserFromRequest(env), cart);
     }
