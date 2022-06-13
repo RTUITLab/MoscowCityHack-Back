@@ -1,4 +1,4 @@
-package com.example.moscowcityhackback.entity.specification;
+package com.example.moscowcityhackback.repositories.searching;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Order;

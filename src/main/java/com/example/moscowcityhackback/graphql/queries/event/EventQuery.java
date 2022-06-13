@@ -1,20 +1,16 @@
 package com.example.moscowcityhackback.graphql.queries.event;
 
 import com.example.moscowcityhackback.entity.event.Event;
-import com.example.moscowcityhackback.entity.specification.*;
+import com.example.moscowcityhackback.repositories.searching.*;
 import com.example.moscowcityhackback.services.event.EventService;
 import com.example.moscowcityhackback.services.utils.TokenParser;
-import com.example.moscowcityhackback.graphql.filter.EventFilter;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Component
 public class EventQuery implements GraphQLQueryResolver {

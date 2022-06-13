@@ -1,4 +1,4 @@
-package com.example.moscowcityhackback.entity.specification;
+package com.example.moscowcityhackback.repositories.searching;
 
 import com.example.moscowcityhackback.entity.event.Event;
 import org.springframework.data.jpa.domain.Specification;
