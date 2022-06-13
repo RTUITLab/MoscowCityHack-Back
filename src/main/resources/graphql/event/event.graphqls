@@ -69,24 +69,24 @@ input FilterRequest {
     value: String
 }
 
-input SortRequest {
-    key: String
-    direction: String
-}
-
-input SearchRequest {
-    filters: FilterRequest
-    sorts: SortRequest
-    page: Int
-    size: Int
-}
+#input SortRequest {
+#    key: String
+#    direction: String
+#}
+#
+#input SearchRequest {
+#    filters: FilterRequest
+#    sorts: SortRequest
+#    page: Int
+#    size: Int
+#}
 
 extend type Query {
     getEvents: [Event],
     getEventsByToken: [Event]
     getEventByTokenAndId(id: ID!): Event
     getEvent(id: ID!): Event
-    searchEvents(search: SearchRequest): [Event]
+    searchEvents(search: FilterRequest): [Event]
 
     prGetEvents: [Event],
     prGetEvent(id: ID!): Event
