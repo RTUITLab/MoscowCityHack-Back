@@ -73,7 +73,7 @@ extend type Query {
     getEvents: [Event],
     getEventsByToken: [Event]
     getEventByTokenAndId(id: ID!): Event
-    searchEvents(search: FilterRequest): [Event]
+    searchEvents(search: [FilterRequest]): [Event]
 }
 
 extend type Mutation {

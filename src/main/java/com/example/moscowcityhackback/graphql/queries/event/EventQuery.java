@@ -1,6 +1,8 @@
 package com.example.moscowcityhackback.graphql.queries.event;
 
 import com.example.moscowcityhackback.entity.event.Event;
+import com.example.moscowcityhackback.entity.specification.FieldType;
+import com.example.moscowcityhackback.entity.specification.Operator;
 import com.example.moscowcityhackback.services.event.EventService;
 import com.example.moscowcityhackback.services.utils.TokenParser;
 import com.example.moscowcityhackback.entity.specification.FilterRequest;
@@ -12,8 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Component
 public class EventQuery implements GraphQLQueryResolver {
@@ -26,18 +30,17 @@ public class EventQuery implements GraphQLQueryResolver {
         this.usernameParser = usernameParser;
     }
 
-    public List<Event> searchEvents(EventFilter filter, DataFetchingEnvironment env) {
+    public List<Event> searchEvents(List<EventFilter> eventFilters, DataFetchingEnvironment env) {
         Map<String, Object> arguments = env.getArguments();
-        List<FilterRequest> filters = (List<FilterRequest>)arguments.get("filters");
-//        if (filtersObject != null) {
-//            List<FilterRequest> filters =
-//            Map<String, String> filtersMap = (Map<String, String>) filtersObject;
-//            List<FilterRequest> filters = new ArrayList<>();
-//            filtersMap.forEach((k, v) -> {
-//                filters.add(FilterRequest.builder().key().value())
-//            });
-//        }
-        SearchRequest request = SearchRequest.builder().build();
+        List<Map<String, String>> search = (List<Map<String, String>>) arguments.get("search");
+        List<FilterRequest> filters = search.stream().map(map -> FilterRequest.builder()
+                .key(map.get("key"))
+                .operator(Operator.valueOf(map.get("operator")))
+                .fieldType(FieldType.valueOf(map.get("fieldType")))
+                .value(map.get("value"))
+                .build())
+                .collect(Collectors.toList());
+        SearchRequest request = SearchRequest.builder().filters(filters).build();
         return eventService.searchEvents(request);
     }
 
