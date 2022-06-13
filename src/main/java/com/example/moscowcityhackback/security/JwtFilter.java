@@ -1,4 +1,4 @@
-package com.example.moscowcityhackback.config;
+package com.example.moscowcityhackback.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

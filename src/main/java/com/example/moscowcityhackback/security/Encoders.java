@@ -1,4 +1,4 @@
-package com.example.moscowcityhackback.config;
+package com.example.moscowcityhackback.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
